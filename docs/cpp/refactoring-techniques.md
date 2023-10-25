@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:30:24
+---
+---
 metaTitle: "C++ | Refactoring Techniques"
 description: "Goto Cleanup, Refactoring walk through"
 ---
@@ -6,14 +9,20 @@ description: "Goto Cleanup, Refactoring walk through"
 # Refactoring Techniques
 
 
+
 **Refactoring** refers to the modification of existing code into an improved version.  Although refactoring is often done while changing code to add features or fix bugs, the term particularly refers improving code without necessarily adding features or fixing bugs.
+
+> **重构**是指将现有代码修改为改进版本。尽管重构通常是在更改代码以添加功能或修复bug时进行的，但这个术语特别指在不必添加功能或解决bug的情况下改进代码。
 
 
 
 ## Goto Cleanup
 
 
+
 In C++ code bases which used to be C, one can find the pattern `goto cleanup`. As the `goto` command makes the workflow of a function harder to understand, this is often avoided. Often, it can be replaced by return statements, loops, functions. Though, with the `goto cleanup` one needs to get rid of cleanup logic.
+
+> 在过去是C的C++代码库中，可以找到“goto-cleanup”模式。由于“goto”命令使函数的工作流更难理解，因此通常会避免这种情况。通常，它可以被返回语句、循环和函数所取代。不过，对于“goto-cleanup”，需要去掉清除逻辑。
 
 ```cpp
 short calculate(VectorStr **data) {
@@ -32,7 +41,10 @@ cleanup:
 
 ```
 
+
 In C++ one could use [RAII](https://stackoverflow.com/documentation/c%2b%2b/1320/raii-resource-acquisition-is-initialization) to fix this issue:
+
+> 在C++中，可以使用[RAI](https://stackoverflow.com/documentation/c%2b%2b/1320/raii-资源获取是初始化）来解决此问题：
 
 ```cpp
 struct VectorRAII final {
@@ -56,14 +68,20 @@ short calculate(VectorStr **data) {
 
 ```
 
+
 From this point on, one could continue refactoring the actual code. For example by replacing the `VectorRAII` by `std::unique_ptr` or `std::vector`.
+
+> 从这一点开始，可以继续重构实际的代码。例如，将“VectorRAII”替换为“std:：unique_ptr”或“std：：vector”。
 
 
 
 ## Refactoring walk through
 
 
+
 Here's a program which might benefit from refactoring.  It's a simple program using C++11 which is intended to calculate and print all prime numbers from 1 to 100 and is based on a program that was posted on [CodeReview](https://codereview.stackexchange.com/) for review.
+
+> 以下是一个可能从重构中受益的程序。这是一个使用C++11的简单程序，旨在计算和打印从1到100的所有素数，它基于发布在[CodeReview]上的一个程序(https://codereview.stackexchange.com/)供审查。
 
 ```cpp
 #include <iostream>
@@ -103,7 +121,10 @@ The output from this program looks like this:
 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
 
+
 The first thing we notice is that the program fails to print `2` which is a prime number.  We could simply add a line of code to simply print that one constant without modifying the rest of the program, but it might be neater to **refactor** the program to split it into two parts - one that creates the prime number list an another that prints them.  Here's how that might look:
+
+> 我们注意到的第一件事是程序无法打印素数“2”。我们可以简单地添加一行代码来打印一个常量，而不修改程序的其余部分，但**重构**程序将其分为两部分可能会更简洁——一部分创建素数列表，另一部分打印它们。以下是可能的情况：
 
 ```cpp
 #include <iostream>
@@ -149,7 +170,10 @@ Trying this version, we see that it does indeed work correctly now:
 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
 
+
 The next step is to notice that the second `if` clause is not really needed.  The logic in the loop looks for prime factors of each given number up to the square root of that number.  This works because if there are any prime factors of a number at least one of them must be less than or equal to the square root of that number.  Reworking just that function (the rest of the program remains the same) we get this result:
+
+> 下一步是要注意，第二个“如果”条款并不是真正需要的。循环中的逻辑寻找每个给定数字的素数，直到该数字的平方根。这是因为，如果一个数字有任何素数，其中至少有一个必须小于或等于该数字的平方根。仅对该函数进行返工（程序的其余部分保持不变），我们就会得到以下结果：
 
 ```cpp
 std::vector<int> prime_list(int limit)
@@ -174,7 +198,10 @@ std::vector<int> prime_list(int limit)
 
 ```
 
+
 We can go further, changing variable names to be a bit more descriptive.  For example `primecount` isn't really a count of primes.  Instead it's an index variable into the vector of known primes.  Also, while `no` is sometimes used as an abbreviation for "number", in mathematical writing, it's more common to use `n`.  We can also make some modifications by eliminating the `break`, and by declaring variables closer to where they're used.
+
+> 我们可以更进一步，将变量名称更改为更具描述性。例如“素数计数”实际上并不是素数的计数。相反，它是已知素数向量的索引变量。此外，虽然“no”有时被用作“数字”的缩写，但在数学写作中，使用“n”更为常见。我们还可以通过删除“break”，并通过声明更接近其使用位置的变量来进行一些修改。
 
 ```cpp
 std::vector<int> prime_list(int limit)
@@ -208,5 +235,8 @@ int main()
 
 ```
 
+
 This is just one way refactoring might be done.  Others might make different choices.  However, the purpose for refactoring remains the same, which is to improve the readability and possibly the performance of the code without necessarily adding features.
+
+> 这只是重构的一种方法。其他人可能会做出不同的选择。然而，重构的目的是不变的，即在不必添加功能的情况下提高代码的可读性，并可能提高代码的性能。
 

@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:28:11
+---
+---
 metaTitle: "C++ | Mutexes"
 description: "std::unique_lock, std::shared_lock, std::lock_guard, Strategies for lock classes: std::try_to_lock, std::adopt_lock, std::defer_lock, std::mutex, std::scoped_lock (C++ 17), Mutex Types, std::lock"
 ---
@@ -11,7 +14,10 @@ description: "std::unique_lock, std::shared_lock, std::lock_guard, Strategies fo
 ## std::unique_lock, std::shared_lock, std::lock_guard
 
 
+
 Used for the RAII style acquiring  of try locks, timed try locks and recursive locks.
+
+> 用于尝试锁、定时尝试锁和递归锁的RAII样式获取。
 
 `std::unique_lock` allows for exclusive ownership of mutexes.
 
@@ -54,7 +60,10 @@ public:
 ## Strategies for lock classes: std::try_to_lock, std::adopt_lock, std::defer_lock
 
 
+
 When creating a std::unique_lock, there are three different locking strategies to choose from: `std::try_to_lock`, `std::defer_lock` and `std::adopt_lock`
+
+> 创建std:：unique_lock时，有三种不同的锁定策略可供选择：“std:：try_to_lock”、“std:”deferr_lock”和“std:`
 
 1. `std::try_to_lock` allows for trying a lock without blocking:
 
@@ -125,7 +134,10 @@ the function, the locks are acquired and released in appropriate order:
 ```
 
 
+
 1. `std::adopt_lock` does not attempt to lock a second time if the calling thread currently owns the lock.
+
+> 1.如果调用线程当前拥有锁，那么“std:：adopt_lock”不会尝试第二次锁定。
 
 ```cpp
 {
@@ -137,14 +149,20 @@ the function, the locks are acquired and released in appropriate order:
 
 ```
 
+
 Something to keep in mind is that std::adopt_lock is not a substitute for  recursive mutex usage. When the lock goes out of scope the mutex is **released**.
+
+> 需要记住的是，std:：adopt_lock不能代替递归互斥的使用。当锁超出作用域时，互斥锁被**释放**。
 
 
 
 ## std::mutex
 
 
+
 std::mutex is a simple, non-recursive synchronization structure that is used to protect data which is accessed by multiple threads.
+
+> std:：mutex是一种简单的非递归同步结构，用于保护多个线程访问的数据。
 
 ```
 
@@ -222,9 +240,15 @@ std::lock(_mutex1, _mutex2);
 
 **The performance difference is more than double.**
 
+
 If you want to use RWLock, you will find that there are two options.<br />
+
+> 如果你想使用RWLock，你会发现有两个选项<br/>
 It is std::shared_mutex and shared_timed_mutex.<br />
+
 you may think std::shared_timed_mutex is just the version 'std::shared_mutex + time method'.
+
+> 您可能认为std:：sharedtimedtmutex只是“std:：haredtmutex+时间方法”的版本。
 
 **But the implementation is totally different.**
 
@@ -318,7 +342,10 @@ ReleaseSRWLockShared(reinterpret_cast<PSRWLOCK>(smtx));
 
 ```
 
+
 You can see that std::shared_mutex is implemented in Windows Slim Reader/Write Locks([https://msdn.microsoft.com/ko-kr/library/windows/desktop/aa904937(v=vs.85).aspx)](https://msdn.microsoft.com/ko-kr/library/windows/desktop/aa904937(v=vs.85).aspx))
+
+> 您可以看到std:：shared_mutex是在Windows Slim读写锁中实现的([https://msdn.microsoft.com/ko-kr/library/windows/desktop/aa904937（v=vs.85）.aspx）](https://msdn.microsoft.com/ko-kr/library/windows/desktop/aa904937（v=vs.85）.aspx）
 
 Now Let's look at the implementation of std::shared_timed_mutex.
 
@@ -531,19 +558,28 @@ private:
 
 ```
 
+
 You can see that std::shared_timed_mutex is implemented in std::condition_value.
+
+> 您可以看到std:：shared_timed_mutex是在std:：condition_value中实现的。
 
 This is a huge difference.
 
 So Let's check the performance of two of them.
 
+
 [<img src="https://i.stack.imgur.com/xdKwe.png" alt="TEST RESULTS" />](https://i.stack.imgur.com/xdKwe.png)
+
+> [<img src=“https://i.stack.imgur.com/xdKwe.png“alt=”测试结果“/>](https://i.stack.imgur.com/xdKwe.png)
 
 This is the result of read/write test for 1000 millisecond.
 
 ### std::shared_mutex processed read/write **over 2 times** more than std::shared_timed_mutex.
 
+
 In this example, the read / write ratio is the same, but the read rate is more frequent than the write rate in real.<br />
+
+> 在这个例子中，读/写比率是相同的，但是实际的读速率比写速率更频繁<br/>
 Therefore, the performance difference can be larger.
 
 the code below is the code in this example.

@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:20:22
+---
+---
 metaTitle: "C++ | Arithmitic Metaprogramming"
 description: "Calculating power in O(log n)"
 ---
@@ -6,14 +9,20 @@ description: "Calculating power in O(log n)"
 # Arithmitic Metaprogramming
 
 
+
 These are example of using C++ template metaprogramming in processing arithmitic operations in compile time.
+
+> 这些是在编译时使用C++模板元编程处理算术运算的例子。
 
 
 
 ## Calculating power in O(log n)
 
 
+
 This example shows an efficient way of calculating power using template metaprogramming.
+
+> 这个例子展示了一种使用模板元编程计算幂的有效方法。
 
 ```cpp
 template <int base, unsigned int exponent>

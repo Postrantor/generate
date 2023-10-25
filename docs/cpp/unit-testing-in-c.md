@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:35:59
+---
+---
 metaTitle: "C++ | Unit Testing in C++"
 description: "Google Test, Catch"
 ---
@@ -6,18 +9,30 @@ description: "Google Test, Catch"
 # Unit Testing in C++
 
 
+
 Unit testing is a level in software testing that validates the behavior and correctness of units of code.
+
+> 单元测试是软件测试中的一个级别，用于验证代码单元的行为和正确性。
+
 
 In C++, "units of code" often refer to either classes, functions, or groups of either. Unit testing is often performed using specialized "testing frameworks" or "testing libraries" that often use non-trivial syntax or usage patterns.
 
+> 在C++中，“代码单元”通常指类、函数或其中任何一个的组。单元测试通常使用专门的“测试框架”或“测试库”来执行，这些框架或库通常使用非琐碎的语法或使用模式。
+
+
 This topic will review different strategies and unit testing libraries or frameworks.
+
+> 本主题将回顾不同的策略和单元测试库或框架。
 
 
 
 ## Google Test
 
 
+
 [Google Test is a C++ testing framework maintained by Google.](https://github.com/google/googletest) It requires building the `gtest` library and linking it to your testing framework when building a test case file.
+
+> [谷歌测试是谷歌维护的一个C++测试框架。](https://github.com/google/googletest)它需要构建“gtest”库，并在构建测试用例文件时将其链接到测试框架。
 
 ### Minimal Example
 
@@ -53,9 +68,15 @@ int main(int argc, char** argv) {
 ## Catch
 
 
+
 [Catch](https://github.com/philsquared/Catch) is a header only library that allows you to use both [TDD](https://en.wikipedia.org/wiki/Test-driven_development) and [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) unit test style.
 
+> [Catch](https://github.com/philsquared/Catch)是一个仅限标头的库，允许您同时使用[TDD](https://en.wikipedia.org/wiki/Test-driven_development)和[BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)单元测试风格。
+
+
 The following snippet is from the Catch documentation page at [this link](https://github.com/philsquared/Catch/blob/master/docs/tutorial.md):
+
+> 以下片段来自Catch文档页面[this link](https://github.com/philsquared/Catch/blob/master/docs/tutorial.md)：
 
 ```
 

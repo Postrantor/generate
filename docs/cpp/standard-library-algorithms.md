@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:31:54
+---
+---
 metaTitle: "C++ | Standard Library Algorithms"
 description: "std::next_permutation, std::for_each, std::accumulate, std::find, std::count, std::count_if, std::find_if, std::min_element, Using std::nth_element To Find The Median (Or Other Quantiles)"
 ---
@@ -19,7 +22,10 @@ bool next_permutation( Iterator first, Iterator last, Compare cmpFun );
 ```
 
 **Effects:**<br />
+
 Sift the data sequence of the range [first, last) into the next lexicographically higher permutation. If `cmpFun` is provided, the permutation rule is customized.
+
+> 将范围[第一个，最后一个）的数据序列筛选到下一个字典上更高的排列中。如果提供了“cmpFun”，则自定义排列规则。
 
 **Parameters:**<br />
 `first`- the beginning of the range to be permutated, inclusive<br />
@@ -27,7 +33,10 @@ Sift the data sequence of the range [first, last) into the next lexicographicall
 
 **Return Value:**<br />
 Returns true if such permutation exists.<br />
+
 Otherwise the range is swaped to the lexicographically smallest permutation and return false.
+
+> 否则，该范围被切换到字典中最小的排列，并返回false。
 
 **Complexity:**<br />
 O(n), n is the distance from `first` to `last`.
@@ -47,7 +56,10 @@ do
 
 ```
 
+
 print all the permutation cases of 1,2,3 in lexicographically-increasing order.<br />
+
+> 按字典递增顺序打印1,2,3的所有排列情况<br/>
 output:
 
 ```cpp
@@ -73,7 +85,10 @@ template<class InputIterator, class Function>
 
 **Effects:**
 
+
 Applies `f` to the result of dereferencing every iterator in the range `[first, last)` starting from `first` and proceeding to `last - 1`.
+
+> 将“f”应用于从“first”开始并继续到“last-1”的范围“[first，last）”中的每个迭代器的解引用结果。
 
 **Parameters:**
 
@@ -97,7 +112,10 @@ std::for_each(v.begin(), v.end(), [](int elem) { std::cout << elem << " "; });
 
 ```
 
+
 Applies the given function for every element of the vector `v` printing this element to `stdout`.
+
+> 将给定函数应用于向量“v”的每个元素，将此元素打印到“stdout”。
 
 
 
@@ -117,7 +135,10 @@ T accumulate(InputIterator first, InputIterator last, T init, BinaryOperation f)
 
 **Effects:**
 
+
 [std::accumulate](http://en.cppreference.com/w/cpp/algorithm/accumulate) performs [fold](https://en.wikipedia.org/wiki/Fold_(higher-order_function)) operation using `f` function on range `[first, last)` starting with `init` as accumulator value.
+
+> [std:：累积](http://en.cppreference.com/w/cpp/algorithm/accumulate)执行[折叠](https://en.wikipedia.org/wiki/Fold_（higher-order_function））操作，在以“init”作为累加器值的范围“[第一，最后）”上使用“f”函数。
 
 Effectively it's equivalent of:
 
@@ -129,7 +150,10 @@ return acc;
 
 ```
 
+
 In version (1) `operator+` is used in place of `f`, so accumulate over container is equivalent of sum of container elements.
+
+> 在版本（1）中，使用“operator+”代替“f”，因此容器上的累加等于容器元素的和。
 
 **Parameters:**
 
@@ -143,7 +167,10 @@ Accumulated value of `f` applications.
 
 **Complexity:**
 
+
 **O(n×k)**, where **n** is the distance from `first` to `last`, **O(k)** is complexity of `f` function.
+
+> **O（n×k）**，其中**n**是从“第一个”到“最后一个”的距离，**O（k）**是“f”函数的复杂性。
 
 **Example:**
 
@@ -221,7 +248,10 @@ Finds the first occurrence of val within the range [first, last)
 
 **Return**
 
+
 An iterator that points to the first element within the range that is equal(==) to val, the iterator points to last if val is not found.
+
+> 一个迭代器，指向等于（==）val的范围内的第一个元素，如果找不到val，则迭代器指向最后一个。
 
 **Example**
 
@@ -368,7 +398,10 @@ count_if (InputIterator first, InputIterator last, UnaryPredicate red);
 
 **Effects**
 
+
 Counts the number of elements in a range for which a specified predicate function is true
+
+> 统计指定谓词函数为true的范围中的元素数
 
 **Parameters**
 
@@ -378,7 +411,10 @@ Counts the number of elements in a range for which a specified predicate functio
 
 **Return**
 
+
 The number of elements within the specified range for which the predicate function returned true.
+
+> 指定范围内谓词函数返回true的元素数。
 
 **Example**
 
@@ -455,7 +491,10 @@ InputIterator find_if (InputIterator first, InputIterator last, UnaryPredicate p
 
 **Effects**
 
+
 Finds the first element in a range for which the predicate function `pred` returns true.
+
+> 查找谓词函数“pred”返回true的范围中的第一个元素。
 
 **Parameters**
 
@@ -465,7 +504,10 @@ Finds the first element in a range for which the predicate function `pred` retur
 
 **Return**
 
+
 An iterator that points to the first element within the range the predicate function pred returns true for. The iterator points to last if val is not found
+
+> 一个迭代器，指向谓词函数pred返回true的范围内的第一个元素。如果找不到val，迭代器将指向last
 
 **Example**
 
@@ -634,13 +676,22 @@ min pair from PairLessThanFunction: 2
 ## Using std::nth_element To Find The Median (Or Other Quantiles)
 
 
+
 The [`std::nth_element`](http://en.cppreference.com/w/cpp/algorithm/nth_element) algorithm takes three iterators: an iterator to the beginning, **n**th position, and end. Once the function returns, the **n**th element (by order) will be the **n**th smallest element. (The function has more elaborate overloads, e.g., some taking comparison functors; see the above link for all the variations.)
+
+> [`std:：nth_element`](http://en.cppreference.com/w/cpp/algorithm/nth_element)该算法采用三个迭代器：一个迭代者到开始，第**n**个位置，和结束。一旦函数返回，第**n**个元素（按顺序）将是第**n***个最小的元素。（该函数有更详细的重载，例如，一些采用比较函子；有关所有变体，请参阅上面的链接。）
 
 **Note** This function is very efficient - it has linear complexity.
 
+
 For the sake of this example, let's define the median of a sequence of length **n** as the element that would be in position ⌈n / 2⌉. For example, the median of a sequence of length 5 is the 3rd smallest element, and so is the median of a sequence of length 6.
 
+> 为了这个例子，让我们将长度为**n**的序列的中值定义为将在位置“n/2”的元素。例如，长度为5的序列的中值是第三小元素，长度为6的序列的中位数也是。
+
+
 To use this function to find the median, we can use the following. Say we start with
+
+> 要使用此函数来查找中值，我们可以使用以下内容。假设我们从
 
 ```cpp
 std::vector<int> v{5, 1, 2, 3, 4};    
@@ -658,7 +709,10 @@ std::nth_element(b, med, e);
 
 ```
 
+
 To find the **p**th [quantile](https://en.wikipedia.org/wiki/Quantile), we would change some of the lines above:
+
+> 查找第**p**th个[分位数](https://en.wikipedia.org/wiki/Quantile)，我们将更改上面的一些行：
 
 ```cpp
 const std::size_t pos = p * std::distance(b, e);

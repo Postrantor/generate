@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:32:02
+---
+---
 metaTitle: "C++ | std::array"
 description: "Initializing an std::array, Element access, Iterating through the Array, Checking size of the Array, Changing all array elements at once"
 ---
@@ -11,9 +14,15 @@ description: "Initializing an std::array, Element access, Iterating through the 
 ## Initializing an std::array
 
 
+
 **Initializing `std::array<T, N>`, where `T` is a scalar type and `N` is the number of elements of type `T`**
 
+> **正在初始化“std:：array＜T，N＞”，其中“T”是标量类型，“N”是类型为“T”的元素数`**
+
+
 If `T` is a scalar type, `std::array` can be initialized in the following ways:
+
+> 如果“T”是标量类型，则可以通过以下方式初始化“std:：array”：
 
 ```cpp
 // 1) Using aggregate-initialization
@@ -35,7 +44,10 @@ std::array<int, 3> a = std::array<int, 3>{ 0, 1, 2 };
 <strong>Initializing `std::array<T, N>`, where `T` is a non-scalar type and `N` is the
 number of elements of type `T`</strong>
 
+
 If `T` is a non-scalar type `std::array` can be initialized in the following ways:
+
+> 如果“T”是非标量类型，则可以通过以下方式初始化“std:：array”：
 
 ```cpp
 struct A { int values[3]; }; // An aggregate type
@@ -74,7 +86,10 @@ std::array<A, 2> a = std::array<A, 2>{ 0, 1, 2, 3, 4, 5 };
 
 **1. `at(pos)`**
 
+
 Returns a reference to the element at position `pos` with bounds checking. If `pos` is not within the range of the container, an exception of type `std::out_of_range` is thrown.
+
+> 通过边界检查返回对位置“pos”处元素的引用。如果“pos”不在容器的范围内，则抛出类型为“std:：out_of_range”的异常。
 
 The complexity is constant O(1).
 
@@ -102,7 +117,10 @@ int main()
 
 **2) `operator[pos]`**
 
+
 Returns a reference to the element at position `pos` without bounds checking.  If `pos` is not within the range of the container, a runtime **segmentation violation** error can occur. This method provides element access equivalent to classic arrays and thereof more efficient than `at(pos)`.
+
+> 返回对位置“pos”处元素的引用，而不进行边界检查。如果“pos”不在容器的范围内，则可能发生运行时**分段冲突**错误。这种方法提供了相当于经典数组的元素访问，并且比“at（pos）”更有效。
 
 The complexity is constant O(1).
 
@@ -130,7 +148,10 @@ int main()
 
 **3) `std::get<pos>`**
 
+
 This **non-member** function returns a reference to the element at **compile-time constant** position `pos` without bounds checking. If `pos` is not within the range of the container, a runtime **segmentation violation** error can occur.
+
+> 这个**非成员**函数返回对**编译时常数**位置“pos”处元素的引用，而不进行边界检查。如果“pos”不在容器的范围内，则可能发生运行时**分段冲突**错误。
 
 The complexity is constant O(1).
 
@@ -158,11 +179,17 @@ int main()
 
 **4) `front()`**
 
+
 Returns a reference to the first element in container. Calling `front()` on an empty container is undefined.
+
+> 返回对容器中第一个元素的引用。对空容器调用“front（）”是未定义的。
 
 The complexity is constant O(1).
 
+
 **Note:** For a container c, the expression `c.front()` is equivalent to `*c.begin()`.
+
+> **注意：**对于容器c，表达式“c.front（）”等效于“*.c.begin（）”。
 
 ```cpp
 #include <array>
@@ -201,7 +228,10 @@ int main()
 
 **6) `data()`**
 
+
 Returns pointer to the underlying array serving as element storage. The pointer is such that `range [data(); data() + size())` is always a valid range, even if the container is empty (`data()` is not dereferenceable in that case).
+
+> 返回指向用作元素存储的基础数组的指针。指针使得“range[data（）；data（）+size（））”始终是一个有效的范围，即使容器是空的（在这种情况下，“data（）”是不可取消引用的）。
 
 The complexity is constant O(1).
 
@@ -245,7 +275,10 @@ int main() {
 ## Checking size of the Array
 
 
+
 One of the main advantage of `std::array` as compared to `C` style array is that we can check the size of the array using `size()` member function
+
+> 与“C”风格的数组相比，“std:：array”的主要优点之一是，我们可以使用“size（）”成员函数检查数组的大小
 
 ```cpp
 int main() {
@@ -261,7 +294,10 @@ int main() {
 ## Changing all array elements at once
 
 
+
 The member function `fill()` can be used on `std::array` for changing the values at once post initialization
+
+> 成员函数“fill（）”可用于“std:：array”，用于在初始化后立即更改值
 
 ```cpp
 int main() {
@@ -289,5 +325,8 @@ int main() {
 #### Remarks
 
 
+
 Use of a `std::array` requires the inclusion of the `<array>` header using `#include <array>`.
+
+> 使用“std:：array”需要使用“#include＜array＞”包含“＜array>”标头。
 

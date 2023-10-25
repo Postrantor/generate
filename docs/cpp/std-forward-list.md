@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:32:08
+---
+---
 metaTitle: "C++ | std::forward_list"
 description: "Example, Methods"
 ---
@@ -108,6 +111,12 @@ words4: [Mo, Mo, Mo, Mo, Mo]
 #### Remarks
 
 
+
 Adding, removing and moving the elements within the list, or across several lists, does not invalidate the iterators currently referring to other elements in the list. However, an iterator or reference referring to an element is invalidated when the corresponding element is removed (via erase_after) from the list.
+
+> 在列表中或在多个列表中添加、删除和移动元素不会使当前引用列表中其他元素的迭代器无效。但是，当从列表中删除相应的元素（通过erase_after）时，引用元素的迭代器或引用将无效。
+
 std::forward_list meets the requirements of Container (except for the size member function and that operator=='s complexity is always linear), AllocatorAwareContainer and SequenceContainer.
+
+> std:：forward_list满足Container（除了size成员函数和运算符==的复杂性始终是线性的）、AllocatorAwareContainer和SequenceContainer的要求。
 

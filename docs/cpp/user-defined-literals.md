@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:36:12
+---
+---
 metaTitle: "C++ | User-Defined Literals"
 description: "Self-made user-defined literal for binary, User-defined literals with long double values, Standard user-defined literals for duration, Standard user-defined literals for strings, Standard user-defined literals for complex"
 ---
@@ -14,7 +17,10 @@ Despite you can write a binary number in C++14 like:
 
 `int number =0b0001'0101; // ==21`
 
+
 here comes a famous example with a self-made implementation for binary numbers:
+
+> 下面是一个著名的例子，它是一个自制的二进制数实现：
 
 Note: The whole template expanding program is running at compile time.
 
@@ -86,7 +92,10 @@ The output of this program is the following:
 ## Standard user-defined literals for duration
 
 
+
 Those following duration user literals are declared in the `namespace` `std::literals::chrono_literals`, where both `literals` and `chrono_literals` are [inline namespaces](http://stackoverflow.com/documentation/c%2b%2b/495/namespaces/4556/inline-namespace#t=20160725201733952379). Access to these operators can be gained with `using namespace std::literals`, `using namespace std::chrono_literals`, and `using namespace std::literals::chrono_literals`.
+
+> 以下持续时间用户文字是在“namespace”“std:：literals:：chrono_literals”中声明的，其中“literals”和“chrono_linterals”都是[inline namespaces](http://stackoverflow.com/documentation/c%2b%2b/495/namespaces/4556/inline-名称空间#t=20160725201733952379）。可以通过“使用命名空间std:：literals”、“使用命名空间td:：chroon\uliterals”和“使用命名空间std：：literals:：chroon_literals”来访问这些运算符。
 
 ```cpp
 #include <chrono>
@@ -118,7 +127,10 @@ int main()
 ## Standard user-defined literals for strings
 
 
+
 Those following string user literals are declared in the `namespace` `std::literals::string_literals`, where both `literals` and `string_literals` are [inline namespaces](http://stackoverflow.com/documentation/c%2b%2b/495/namespaces/4556/inline-namespace#t=20160725201733952379). Access to these operators can be gained with `using namespace std::literals`, `using namespace std::string_literals`, and `using namespace std::literals::string_literals`.
+
+> 以下字符串用户文字是在“namespace”“std:：literals:：string_triterals”中声明的，其中“literals”和“string_typerals”都是[inline namespaces](http://stackoverflow.com/documentation/c%2b%2b/495/namespaces/4556/inline-名称空间#t=20160725201733952379）。可以通过“使用命名空间std:：literals”、“使用命名空间td：：string_tritels”和“使用命名空间std：：literals:：string_Tritels”来访问这些运算符。
 
 ```cpp
 #include <codecvt>
@@ -163,7 +175,10 @@ std::string s2 = "foo\0\0bar"s; // That string contains 2 '\0' in its middle
 ## Standard user-defined literals for complex
 
 
+
 Those following complex user literals are declared in the `namespace` `std::literals::complex_literals`, where both `literals` and `complex_literals` are [inline namespaces](http://stackoverflow.com/documentation/c%2b%2b/495/namespaces/4556/inline-namespace#t=20160725201733952379). Access to these operators can be gained with `using namespace std::literals`, `using namespace std::complex_literals`, and `using namespace std::literals::complex_literals`.
+
+> 以下复杂用户文字是在“namespace”“std:：literals:：complex_literals”中声明的，其中“literals”和“complex_linterals”都是[inline namespaces](http://stackoverflow.com/documentation/c%2b%2b/495/namespaces/4556/inline-名称空间#t=20160725201733952379）。可以通过“使用命名空间std:：literals”、“使用命名空间std：：complex_literals”和“使用命名空间td：：literals:：complex-literals”来访问这些运算符。
 
 ```cpp
 #include <complex>

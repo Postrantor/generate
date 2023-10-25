@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:36:01
+---
+---
 metaTitle: "C++ | Unnamed types"
 description: "Unnamed classes, As a type alias, Anonymous members, Anonymous Union"
 ---
@@ -10,7 +13,10 @@ description: "Unnamed classes, As a type alias, Anonymous members, Anonymous Uni
 ## Unnamed classes
 
 
+
 Unlike a named class or struct, unnamed classes and structs must be instantiated where they are defined, and cannot have constructors or destructors.
+
+> 与命名类或结构不同，未命名类和结构必须在定义它们的地方实例化，并且不能有构造函数或析构函数。
 
 ```cpp
 struct {
@@ -41,7 +47,10 @@ barbar.buzz = 2;
 ## As a type alias
 
 
+
 Unnamed class types may also be used when creating type aliases, i.e. via `typedef` and `using`:
+
+> 创建类型别名时也可以使用未命名的类类型，即通过“typedef”和“using”：
 
 ```cpp
 using vec2d = struct {
@@ -71,7 +80,10 @@ pt.y = 3.f;
 ## Anonymous members
 
 
+
 As a non-standard extension to C++, common compilers allow the use of classes as anonymous members.
+
+> 作为C++的非标准扩展，通用编译器允许使用类作为匿名成员。
 
 ```cpp
 struct Example {
@@ -99,7 +111,10 @@ ex.inner_b -= ex.outer_b;
 ## Anonymous Union
 
 
+
 Member names of an anonymous union belong to the scope of the union declaration an must be distinct to all other names of this scope. The example here has the same construction as example [Anonymous Members](http://stackoverflow.com/documentation/c%2B%2B/2704/unnamed-types/9055/anonymous-members#t=201609090658106572273) using "struct" but is standard conform.
+
+> 匿名联合的成员名称属于联合声明的范围，并且必须与该范围的所有其他名称不同。这里的示例与示例[匿名成员]具有相同的结构(http://stackoverflow.com/documentation/c%2B%2B/2704/unnamed-types/9055/匿名成员#t=201609090658106572273），但符合标准。
 
 ```cpp
 struct Sample {

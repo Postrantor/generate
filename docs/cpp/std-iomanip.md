@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:32:14
+---
+---
 metaTitle: "C++ | std::iomanip"
 description: "std::setprecision, std::setfill, std::setiosflags, std::setw"
 ---
@@ -10,7 +13,10 @@ description: "std::setprecision, std::setfill, std::setiosflags, std::setw"
 ## std::setprecision
 
 
+
 When used in an expression `out << setprecision(n)` or `in >> setprecision(n)`, sets the precision parameter of the stream out or in to exactly n. Parameter of this function is integer, which is new value for precision.
+
+> 在表达式“out＜＜setprecision（n）”或“in＞＞setprecisnce（n））中使用时，将流out或in的精度参数设置为n。此函数的参数为整数，这是精度的新值。
 
 Example:
 
@@ -40,9 +46,15 @@ int main()
 ## std::setfill
 
 
+
 When used in an expression `out << setfill(c)` sets the fill character of the stream out to `c`.
 
+> 在表达式“out＜setfill（c）”中使用时，将流out的填充字符设置为“c”。
+
+
 Note: The current fill character may be obtained with `std::ostream::fill`.
+
+> 注意：当前填充字符可以通过“std:：ostream:：fill”获得。
 
 Example:
 
@@ -66,7 +78,10 @@ int main()
 ## std::setiosflags
 
 
+
 When used in an expression `out << setiosflags(mask)` or `in >> setiosflags(mask)`, sets all format flags of the stream out or in as specified by the mask.
+
+> 在表达式“out＜＜setiosflags（mask）”或“in＞＞setiosfrags（mask）”中使用时，按掩码指定设置流out或in的所有格式标志。
 
 List of all `std::ios_base::fmtflags` :
 
@@ -78,12 +93,24 @@ List of all `std::ios_base::fmtflags` :
 - `right` - right adjustment (adds fill characters to the left)
 - `internal` - internal adjustment (adds fill characters to the internal designated point)
 - `adjustfield` - `left|right|internal`. Useful for masking operations
+
 - `scientific` - generate floating point types using scientific notation, or hex notation if combined with fixed
+
+> -“scientific”-使用科学记数法生成浮点类型，如果与固定记数法组合，则使用十六进制记数法
+
 - `fixed` - generate floating point types using fixed notation, or hex notation if combined with scientific
+
+> -“fixed”-使用固定表示法或十六进制表示法（如果与scientific组合）生成浮点类型
 - `floatfield` - `scientific|fixed|(scientific|fixed)|0`. Useful for masking operations
 - `boolalpha` - insert and extract `bool` type in alphanumeric format
+
 - `showbase` - generate a prefix indicating the numeric base for integer output, require the currency indicator in monetary I/O
+
+> -“showbase”-生成一个前缀，指示整数输出的数字基数，需要货币I/O中的货币指示符
+
 - `showpoint` - generate a decimal-point character unconditionally for floating-point number output
+
+> -“showpoint”-无条件地为浮点数输出生成一个小数点字符
 - `showpos` - generate a `+` character for non-negative numeric output
 - `skipws` - skip leading whitespace before certain input operations
 - `unitbuf`    flush the output after each output operation
@@ -167,7 +194,10 @@ This outputs:
 
 (where the last line is there to aid in seeing the character offsets).
 
+
 Sometimes we need to set the width of the output field, usually when we need to get the output in some structured and proper layout. That can be done using **`std::setw`** of **std::iomanip**.
+
+> 有时我们需要设置输出字段的宽度，通常是在我们需要以某种结构化和适当的布局获得输出时。这可以使用**std:：iomanip**的**`std:：setw`**来完成。
 
 The syntax for `std::setw` is:
 

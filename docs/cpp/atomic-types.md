@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:20:31
+---
+---
 metaTitle: "C++ | Atomic Types"
 description: "Multi-threaded Access"
 ---
@@ -10,7 +13,10 @@ description: "Multi-threaded Access"
 ## Multi-threaded Access
 
 
+
 An atomic type can be used to safely read and write to a memory location shared between two threads.
+
+> 原子类型可以用于安全地读取和写入两个线程之间共享的内存位置。
 
 A Bad example that is likely to cause a data race:
 
@@ -52,7 +58,10 @@ int main() {
 
 ```
 
+
 The above example may cause a corrupted read and can lead to undefined behavior.
+
+> 上面的示例可能会导致损坏的读取，并可能导致未定义的行为。
 
 An example with thread safety:
 
@@ -95,7 +104,10 @@ int main() {
 
 ```
 
+
 The above example is safe because all `store()` and `load()` operations of the `atomic` data type protect the encapsulated `int` from simultaneous access.
+
+> 上面的例子是安全的，因为“atomic”数据类型的所有“store（）”和“load（）”操作都保护封装的“int”不被同时访问。
 
 
 

@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:25:08
+---
+---
 metaTitle: "C++ | Friend keyword"
 description: "Friend function, Friend method, Friend class"
 ---
@@ -6,16 +9,25 @@ description: "Friend function, Friend method, Friend class"
 # Friend keyword
 
 
+
 Well-designed classes encapsulate their functionality, hiding their implementation while providing a clean, documented interface.  This allows redesign or change so long as the interface is unchanged.
 
+> 设计良好的类封装了它们的功能，隐藏了它们的实现，同时提供了一个干净的、文档化的接口。只要界面不变，就可以重新设计或更改。
+
+
 In a more complex scenario, multiple classes that rely on each others' implementation details may be required.  Friend classes and functions allow these peers access to each others' details, without compromising the encapsulation and information hiding of the documented interface.
+
+> 在更复杂的场景中，可能需要多个依赖于彼此实现细节的类。Friend类和函数允许这些对等方访问彼此的详细信息，而不会影响文档化接口的封装和信息隐藏。
 
 
 
 ## Friend function
 
 
+
 A class or a structure may declare any function it's friend. If a function is a friend of a class, it may access all it's protected and private members:
+
+> 类或结构可以声明它的朋友的任何函数。如果函数是类的朋友，它可以访问所有受保护的私有成员：
 
 ```cpp
 // Forward declaration of functions.
@@ -45,9 +57,15 @@ void friend_function() {
 
 ```
 
+
 Access modifiers do not alter friend semantics. Public, protected and private declarations of a friend are equivalent.
 
+> 访问修饰符不会改变友元语义。朋友的公开声明、受保护声明和私人声明是等效的。
+
+
 Friend declarations are not inherited. For example, if we subclass `PrivateHolder`:
+
+> 友元声明不是继承的。例如，如果我们对“PrivateHolder”进行子类化：
 
 ```cpp
 class PrivateHolderDerived : public PrivateHolder {
@@ -72,7 +90,10 @@ void friend_function() {
 
 ```
 
+
 Note that `PrivateHolderDerived` member function cannot access `PrivateHolder::private_value`, while friend function can do it.
+
+> 请注意，“PrivateHolderDerived”成员函数不能访问“PrivateHolder:：private_value”，而友元函数可以访问。
 
 
 
@@ -108,7 +129,10 @@ void Accesser::private_accesser() {
 ## Friend class
 
 
+
 A whole class may be declared as friend. Friend class declaration means that any member of the friend may access private and protected members of the declaring class:
+
+> 整个类可以被声明为朋友。友元类声明意味着友元的任何成员都可以访问声明类的私有和受保护成员：
 
 ```cpp
 class Accesser {
@@ -139,7 +163,10 @@ void Accesser::private_accesser2() {
 
 ```
 
+
 Friend class declaration is not reflexive. If classes need private access in both directions, both of them need friend declarations.
+
+> 友元类声明不是反射性的。如果类需要双向的私有访问，那么它们都需要友元声明。
 
 ```cpp
 class Accesser {

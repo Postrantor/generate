@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:23:58
+---
+---
 metaTitle: "C++ | Digit separators"
 description: "Digit Separator"
 ---
@@ -35,7 +38,10 @@ Single quotes mark are ignored when determining its value.
 `1'048'576`, `0X100000`, `0x10'0000`, and `0'004'000'000` all have the same value.</li>
 - The literals `1.602'176'565e-19` and `1.602176565e-19` have the same value.
 
+
 The position of the single quotes is irrelevant. All the following are equivalent:
+
+> 单引号的位置无关紧要。以下所有内容都是等效的：
 
 ```cpp
 long long a1 = 123456789ll;

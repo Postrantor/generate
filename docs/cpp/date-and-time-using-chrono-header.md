@@ -1,4 +1,7 @@
 ---
+tip: translate by baidu@2023-10-25 08:23:45
+---
+---
 metaTitle: "C++ | Date and time using <chrono> header"
 description: "Measuring time using <chrono>, Find number of days between two dates"
 ---
@@ -10,7 +13,10 @@ description: "Measuring time using <chrono>, Find number of days between two dat
 ## Measuring time using <chrono>
 
 
+
 The `system_clock` can be used to measure the time elapsed during some part of a program's execution.
+
+> “system_clock”可用于测量程序执行某些部分所用的时间。
 
 ```cpp
 #include <iostream>
@@ -30,14 +36,20 @@ int main() {
 
 ```
 
+
 In this example, `sleep_for` was used to make the active thread sleep for a time period measured in `std::chrono::seconds`, but the code between braces could be any function call that takes some time to execute.
+
+> 在本例中，“sleep_for”用于使活动线程睡眠一段以“std:：chrono:：seconds”为单位的时间，但大括号之间的代码可以是任何需要一些时间才能执行的函数调用。
 
 
 
 ## Find number of days between two dates
 
 
+
 This example shows how to find number of days between two dates. A date is specified by year/month/day of month, and additionally hour/minute/second.
+
+> 此示例显示如何查找两个日期之间的天数。日期由年/月/日指定，另外还有小时/分钟/秒。
 
 Program calculates number of days in years since 2000.
 
