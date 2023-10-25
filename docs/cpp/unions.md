@@ -2,16 +2,14 @@
 tip: translate by baidu@2023-10-25 08:35:58
 ---
 ---
+
 metaTitle: "C++ | Unions"
 description: "Undefined Behavior, Basic Union Features, Typical Use"
----
+--------------------------------------------------------------------
 
 # Unions
 
-
-
 ## Undefined Behavior
-
 
 ```cpp
 union U {
@@ -32,11 +30,7 @@ if (u.b == 10) {
 
 ```
 
-
-
 ## Basic Union Features
-
-
 
 Unions are a specialized struct within which all members occupy overlapping memory.
 
@@ -61,11 +55,7 @@ u.c != 4.f;
 
 ```
 
-
-
 ## Typical Use
-
-
 
 Unions are useful for minimizing memory usage for exclusive data, such as when implementing mixed data types.
 
@@ -103,10 +93,7 @@ struct AnyType {
 
 ```
 
-
-
 #### Remarks
-
 
 Unions are very useful tools, but come with a few important caveats:
 
@@ -114,7 +101,8 @@ Unions are very useful tools, but come with a few important caveats:
 
 It is undefined behavior, per the C++ standard, to access an element of a union that was not the most recently modified member. Although a lot of C++ compilers permit this access in well defined ways, these are extensions and cannot be guaranteed across compilers.
 
-> 根据C++标准，访问不是最近修改的成员的并集的元素是未定义的行为。尽管许多C++编译器都以定义良好的方式允许这种访问，但这些都是扩展，不能在编译器之间得到保证。
+> 根据 C++ 标准，访问不是最近修改的成员的并集的元素是未定义的行为。尽管许多 C++ 编译器都以定义良好的方式允许这种访问，但这些都是扩展，不能在编译器之间得到保证。
+
 <p>A [`std::variant`](http://en.cppreference.com/w/cpp/utility/variant) (since C++17) is like a union, only it tells you what it currently contains (part of its visible state is the type of the value it holds at a
 given moment: it enforces value access happening only to that type).</p>
 </li>
@@ -123,5 +111,5 @@ given moment: it enforces value access happening only to that type).</p>
 Implementations do not necessarily align members of different sizes to the same address.
 
 > 实现不一定要将不同大小的成员对齐到同一地址。
-</li>
 
+</li>

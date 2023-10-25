@@ -2,17 +2,14 @@
 tip: translate by baidu@2023-10-25 08:20:45
 ---
 ---
+
 metaTitle: "C++ | Basic input/output in c++"
 description: "user input and standard output"
----
+---------------------------------------------
 
 # Basic input/output in c++
 
-
-
-
 ## user input and standard output
-
 
 ```cpp
 #include <iostream>
@@ -28,11 +25,7 @@ int main()
 
 ```
 
-
-
 #### Remarks
-
-
 
 The standard library `<iostream>` defines few streams for input and output:
 
@@ -47,7 +40,6 @@ The standard library `<iostream>` defines few streams for input and output:
 |clog   | standard logging (output) stream |
 
 ```
-
 
 Out of four streams mentioned above `cin` is basically used for user input and other three are used for outputting the data. In general or in most coding environments `cin` (**console input** or standard input) is keyboard and `cout` (**console output** or standard output) is monitor.
 
@@ -75,13 +67,10 @@ cout              - output stream
 
 `cout` here takes the string to be displayed and inserts it to standard output or monitor
 
-
 All four streams are located in standard namespace `std` so we need to print `std::stream` for stream `stream` to use it.
 
 > 所有四个流都位于标准命名空间“std”中，因此我们需要为流“stream”打印“std:：stream”才能使用它。
 
-
 There is also a manipulator `std::endl` in code. It can be used only with output streams. It inserts end of line `'\n'` character in the stream and flushes it. It causes immediately producing output.
 
 > 代码中还有一个操纵器“std:：endl”。它只能与输出流一起使用。它在流中插入行尾字符“”并刷新它。它会立即产生输出。
-

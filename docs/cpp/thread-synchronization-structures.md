@@ -2,27 +2,22 @@
 tip: translate by baidu@2023-10-25 08:34:44
 ---
 ---
+
 metaTitle: "C++ | Thread synchronization structures"
 description: "std::shared_lock, std::call_once, std::once_flag, Object locking for efficient access., std::condition_variable_any, std::cv_status"
----
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Thread synchronization structures
 
+Working with [threads](http://stackoverflow.com/documentation/c%2B%2B/699/threading) might need some synchronization techniques if the threads interact. In this topic, you can find the different structures which are provided by the standard library to solve these issues.
 
-
-Working with [threads](http://stackoverflow.com/documentation/c%2b%2b/699/threading) might need some synchronization techniques if the threads interact. In this topic, you can find the different structures which are provided by the standard library to solve these issues.
-
-> 使用[线程](http://stackoverflow.com/documentation/c%2b%2b/699/threading)如果线程交互，可能需要一些同步技术。在本主题中，您可以找到标准库提供的不同结构来解决这些问题。
-
-
+> 使用[线程](http://stackoverflow.com/documentation/c%2B%2B/699/threading)如果线程交互，可能需要一些同步技术。在本主题中，您可以找到标准库提供的不同结构来解决这些问题。
 
 ## std::shared_lock
 
-
-
 A shared_lock can be used in conjunction with a unique lock to allow multiple readers and exclusive writers.
 
-> shared_lock可以与唯一锁结合使用，以允许多个读取器和独占写入器。
+> shared_lock 可以与唯一锁结合使用，以允许多个读取器和独占写入器。
 
 ```cpp
 #include <unordered_map>
@@ -54,14 +49,11 @@ class PhoneBook {
 
 ```
 
-
-
 ## std::call_once, std::once_flag
-
 
 `std::call_once` ensures execution of a function exactly once by competing threads. It throws `std::system_error` in case it cannot complete its task.
 
-Used in conjunction with s`td::once_flag`.
+Used in conjunction with s `td::once_flag`.
 
 ```cpp
 #include <mutex>
@@ -76,11 +68,7 @@ void do_something(){
 
 ```
 
-
-
 ## Object locking for efficient access.
-
-
 
 Often you want to lock the entire object while you perform multiple operations on it. For example, if you need to examine or modify the object using **iterators**. Whenever you need to call multiple member functions it is generally more efficient to lock the whole object rather than individual member functions.
 
@@ -125,7 +113,6 @@ private:
 
 ```
 
-
 When calculating a checksum the object is locked for reading, allowing other threads that want to read from the object at the same time to do so.
 
 > 在计算校验和时，对象被锁定以进行读取，从而允许其他希望同时读取对象的线程进行读取。
@@ -146,7 +133,6 @@ std::size_t checksum(text_buffer const& buf)
 
 ```
 
-
 Clearing the object updates its internal data so it must be done using an exclusing lock.
 
 > 清除对象会更新其内部数据，因此必须使用排除锁进行清除。
@@ -159,7 +145,6 @@ void clear(text_buffer& buf)
 }
 
 ```
-
 
 When obtaining more than one lock care should be taken to always acquire the locks in the same order for all threads.
 
@@ -176,23 +161,17 @@ void transfer(text_buffer const& input, text_buffer& output)
 
 ```
 
-
 **note:** This is best done using [std::deferred::lock](http://en.cppreference.com/w/cpp/thread/lock_tag) and calling [std::lock](http://en.cppreference.com/w/cpp/thread/lock)
 
-> **注意：**最好使用[std:：deferred:：lock](http://en.cppreference.com/w/cpp/thread/lock_tag)并调用[std:：lock](http://en.cppreference.com/w/cpp/thread/lock)
-
-
+> **注意：**最好使用 [std:：deferred:：lock](http://en.cppreference.com/w/cpp/thread/lock_tag) 并调用 [std:：lock](http://en.cppreference.com/w/cpp/thread/lock)
 
 ## std::condition_variable_any, std::cv_status
 
-
-
 A generalization of `std::condition_variable`, `std::condition_variable_any` works with any type of BasicLockable structure.
 
-> “std:：condition_variable`，”std:：condition_variable_any“的泛化适用于任何类型的BasicLockable结构。
+> “std:：condition_variable`，”std:：condition_variable_any“的泛化适用于任何类型的 BasicLockable 结构。
 
 `std::cv_status` as a return status for a condition variable has two possible return codes:
 
 - std::cv_status::no_timeout: There was no timeout, condition variable was notified
 - std::cv_status::no_timeout: Condition variable timed out
-

@@ -2,26 +2,22 @@
 tip: translate by baidu@2023-10-25 08:23:00
 ---
 ---
+
 metaTitle: "C++ | Const Correctness"
 description: "The Basics, Const Correct Class Design, Const Correct Function Parameters, Const Correctness as Documentation"
----
+----------------------------------------------------------------------------------------------------------------------------
 
 # Const Correctness
 
-
-
 ## The Basics
-
-
 
 **`const` correctness** is the practice of designing code so that only code that **needs** to modify an instance is **able** to modify an instance (i.e. has write access), and conversely, that any code that doesn't need to modify an instance is unable to do so (i.e. only has read access).  This prevents the instance from being modified unintentionally, making code less errorprone, and documents whether the code is intended to change the instance's state or not.  It also allows instances to be treated as `const` whenever they don't need to be modified, or defined as `const` if they don't need to be changed after initialisation, without losing any functionality.
 
-> **`const`corrective**是一种设计代码的做法，这样只有**需要**修改实例的代码**才能**修改实例（即具有写访问权限），相反，任何不需要修改实例的程序都无法修改（即仅具有读访问权限）。这可以防止实例被无意修改，从而减少代码出错的可能性，并记录代码是否旨在更改实例的状态。它还允许实例在不需要修改时被视为“const”，或者在初始化后不需要更改时被定义为“const”，而不会丢失任何功能。
-
+> **`const` corrective** 是一种设计代码的做法，这样只有**需要**修改实例的代码**才能**修改实例（即具有写访问权限），相反，任何不需要修改实例的程序都无法修改（即仅具有读访问权限）。这可以防止实例被无意修改，从而减少代码出错的可能性，并记录代码是否旨在更改实例的状态。它还允许实例在不需要修改时被视为“const”，或者在初始化后不需要更改时被定义为“const”，而不会丢失任何功能。
 
 This is done by giving member functions [`const` CV-qualifiers](http://stackoverflow.com/documentation/c%2B%2B/7146/the-this-pointer/24492/this-pointer-cv-qualifiers#t=201610191445574282562), and by making pointer/reference parameters `const`, except in the case that they need write access.
 
-> 这是通过赋予成员函数[`const`CV限定符]来实现的(http://stackoverflow.com/documentation/c%2B%2B/7146/the-this pointer/24492/this pointer cv限定符#t=201610191445574282562），并通过使指针/引用参数为“const”，除非它们需要写访问。
+> 这是通过赋予成员函数[`const` CV 限定符]来实现的([http://stackoverflow.com/documentation/c%2B%2B/7146/the-this](http://stackoverflow.com/documentation/c%2B%2B/7146/the-this) pointer/24492/this pointer cv 限定符#t=201610191445574282562），并通过使指针/引用参数为“const”，除非它们需要写访问。
 
 ```cpp
 class ConstCorrectClass {
@@ -55,25 +51,19 @@ const_correct_writer(invariant); // Error.  Calling modifying function on const 
 
 ```
 
-
 Due to the nature of const correctness, this starts with the class' member functions, and works its way outwards; if you try to call a non-`const` member function from a `const` instance, or from a non-`const` instance being treated as `const`, the compiler will give you an error about it losing cv-qualifiers.
 
-> 由于常量正确性的性质，它从类的成员函数开始，并向外扩展；如果您试图从“const”实例或从被视为“const’的非“const‘实例调用一个非“const”成员函数，编译器将为您提供一个丢失cv限定符的错误。
-
-
+> 由于常量正确性的性质，它从类的成员函数开始，并向外扩展；如果您试图从“const”实例或从被视为“const’的非“const‘实例调用一个非“const”成员函数，编译器将为您提供一个丢失 cv 限定符的错误。
 
 ## Const Correct Class Design
 
-
-
 In a `const`-correct class, all member functions which don't change logical state have `this` cv-qualified as `const`, indicating that they don't modify the object (apart from any [`mutable`](http://stackoverflow.com/documentation/c%2B%2B/2705/mutable-keyword/9058/non-static-class-member-modifier#t=201610041643529340028) fields, which can freely be modified even in `const` instances); if a `const` cv-qualified function returns a reference, that reference should also be `const`.  This allows them to be called on both constant and non-cv-qualified instances, as a `const T*` is capable of binding to either a `T*` or a `const T*`.  This, in turn, allows functions to declare their passed-by-reference parameters as `const` when they don't need to be modified, without losing any functionality.
 
-> 在“const”-correct类中，所有不改变逻辑状态的成员函数都将“this”cv限定为“const“，表示它们不修改对象（除了任何[`mutable`](http://stackoverflow.com/documentation/c%2B%2B/2705/mutable-keyword/9058/非静态类成员修饰符#t=201610041643529340028）字段，即使在“const”实例中也可以自由修改）；如果一个“const”cv限定函数返回一个引用，那么该引用也应该是“const“。这允许在常量和非cv限定实例上调用它们，因为“const T*”能够绑定到“T*”或“const T*”。这反过来又允许函数在不需要修改时将其传递的引用参数声明为“const”，而不会丢失任何功能。
-
+> 在“const”-correct 类中，所有不改变逻辑状态的成员函数都将“this”cv 限定为“const“，表示它们不修改对象（除了任何[`mutable`]([http://stackoverflow.com/documentation/c%2B%2B/2705/mutable-keyword/9058/](http://stackoverflow.com/documentation/c%2B%2B/2705/mutable-keyword/9058/)非静态类成员修饰符#t=201610041643529340028）字段，即使在“const”实例中也可以自由修改）；如果一个“const”cv 限定函数返回一个引用，那么该引用也应该是“const“。这允许在常量和非 cv 限定实例上调用它们，因为“const T*”能够绑定到“T*”或“const T*”。这反过来又允许函数在不需要修改时将其传递的引用参数声明为“const”，而不会丢失任何功能。
 
 Furthermore, in a `const` correct class, all passed-by-reference function parameters will be `const` correct, as discussed in `Const Correct Function Parameters`, so that they can only be modified when the function explicitly **needs** to modify them.
 
-> 此外，在“const”correct类中，所有通过引用传递的函数参数都将是“const’correct”，如“const correct function parameters”中所述，因此只有当函数明确**需要**修改它们时，才能修改它们。
+> 此外，在“const”correct 类中，所有通过引用传递的函数参数都将是“const’correct”，如“const correct function parameters”中所述，因此只有当函数明确**需要**修改它们时，才能修改它们。
 
 First, let's look at `this` cv-qualifiers:
 
@@ -141,7 +131,6 @@ void const_correct_func(const ConstCorrectCVQ& c) {
 
 ```
 
-
 We can then combine this with `Const Correct Function Parameters`, causing the class to be fully `const`-correct.
 
 > 然后，我们可以将其与“Const Correct Function Parameters”组合，使类完全“Const”-Correct。
@@ -171,8 +160,7 @@ void ConstCorrect::doNothing() const {}
 
 ```
 
-
-This can also be combined with overloading based on `const`ness, in the case that we want one behaviour if the instance is `const`, and a different behaviour if it isn't; a common use for this is constainers providing accessors that only allow modification if the container itself is non-`const`.
+This can also be combined with overloading based on `const` ness, in the case that we want one behaviour if the instance is `const`, and a different behaviour if it isn't; a common use for this is constainers providing accessors that only allow modification if the container itself is non-`const`.
 
 > 这也可以与基于“const”的重载相结合，在这种情况下，如果实例是“const“，我们想要一种行为，如果不是，我们想要另一种行为；这方面的一个常见用途是常量提供访问器，只有当容器本身是非常量时才允许修改。
 
@@ -191,20 +179,15 @@ class ConstCorrectContainer {
 
 ```
 
-
-This is commonly used in the standard library, with most containers providing overloads to take `const`ness into account.
+This is commonly used in the standard library, with most containers providing overloads to take `const` ness into account.
 
 > 这通常在标准库中使用，大多数容器都提供重载以考虑“const”。
 
-
-
 ## Const Correct Function Parameters
-
-
 
 In a `const`-correct function, all passed-by-reference parameters are marked as `const` unless the function directly or indirectly modifies them, preventing the programmer from inadvertently changing something they didn't mean to change.  This allows the function to take both `const` and non-cv-qualified instances, and in turn, causes the instance's `this` to be of type `const T*` when a member function is called, where `T` is the class' type.
 
-> 在“const”-correct函数中，所有传递的引用参数都被标记为“const“，除非函数直接或间接地修改它们，以防止程序员无意中更改它们不想更改的内容。这允许函数同时使用“const”和非cv限定的实例，反过来，当调用成员函数时，会导致实例的“This”的类型为“const T*”，其中“T”是类的类型。
+> 在“const”-correct 函数中，所有传递的引用参数都被标记为“const“，除非函数直接或间接地修改它们，以防止程序员无意中更改它们不想更改的内容。这允许函数同时使用“const”和非 cv 限定的实例，反过来，当调用成员函数时，会导致实例的“This”的类型为“const T*”，其中“T”是类的类型。
 
 ```cpp
 struct Example {
@@ -236,10 +219,9 @@ int main() {
 
 ```
 
-
 While the effects of this are less immediately visible than those of `const` correct class design (in that `const`-correct functions and `const`-incorrect classes will cause compilation errors, while `const`-correct classes and `const`-incorrect functions will compile properly), `const` correct functions will catch a lot of errors that `const` incorrect functions would let slip through, such as the one below.  [Note, however, that a `const`-incorrect function **will** cause compilation errors if passed a `const` instance when it expected a non-`const` one.]
 
-> 虽然这种方法的效果不如“const”correct类设计的效果那么明显（因为“const’-correct函数和“const‘-incorrect类将导致编译错误，而“const′-correct类和“const”-incor正确函数将正确编译），例如下面的一个。[但是，请注意，如果传递了一个“const”实例，而该实例需要一个非“const’实例，那么“const‘-不正确的函数**将导致编译错误。]
+> 虽然这种方法的效果不如“const”correct 类设计的效果那么明显（因为“const’-correct 函数和“const‘-incorrect 类将导致编译错误，而“const′-correct 类和“const”-incor 正确函数将正确编译），例如下面的一个。[但是，请注意，如果传递了一个“const”实例，而该实例需要一个非“const’实例，那么“const‘-不正确的函数**将导致编译错误。]
 
 ```cpp
 // Read value from vector, then compute & return a value.
@@ -294,13 +276,9 @@ const T& good_func(const std::vector<T>& v, Helper<T>& h) {
 
 ```
 
-
-
 ## Const Correctness as Documentation
 
-
-
-One of the more useful things about `const` correctness is that it serves as a way of documenting code, providing certain guarantees to the programmer and other users.  These guarantees are enforced by the compiler due to `const`ness, with a lack of `const`ness in turn indicating that code doesn't provide them.
+One of the more useful things about `const` correctness is that it serves as a way of documenting code, providing certain guarantees to the programmer and other users.  These guarantees are enforced by the compiler due to `const` ness, with a lack of `const` ness in turn indicating that code doesn't provide them.
 
 > “const”正确性的一个更有用的地方是，它可以作为一种记录代码的方式，为程序员和其他用户提供一定的保证。这些保证是由编译器由于“常量”而强制执行的，而缺少“常量”则表明代码没有提供这些保证。
 
@@ -319,7 +297,6 @@ One of the more useful things about `const` correctness is that it serves as a w
 
 - May or may not modify logical state.
 - May or may not call other functions which modify logical state.
-
 
 This can be used to make assumptions about the state of the object after any given member function is called, even without seeing the definition of that function:
 
@@ -355,7 +332,6 @@ class ConstMemberFunctions {
 };
 
 ```
-
 
 Due to `const` rules, these assumptions will in fact be enforced by the compiler.
 
@@ -409,11 +385,9 @@ void ConstMemberFunctions::set_val(int v) {
 > -不应将这些参数传递给任何将修改它们的**其他**函数和/或调用任何将修改这些参数的成员函数。
 
 - May or may not modify those parameters, or call any member functions which whould modify them.
-
 - May or may not pass those parameters to other functions which would modify them and/or call any member functions that would modify them.
 
 > -可以将这些参数传递给或不传递给将修改它们的其他函数和/或调用将修改这些参数的任何成员函数。
-
 
 This can be used to make assumptions about the state of the parameters after being passed to any given function, even without seeing the definition of that function.
 
@@ -444,7 +418,6 @@ void one_const_one_not(const ConstMemberFunctions& l, ConstMemberFunctions& r);
 void bad_parameter(const ConstMemberFunctions& c);
 
 ```
-
 
 Due to `const` rules, these assumptions will in fact be enforced by the compiler.
 
@@ -493,10 +466,9 @@ void bad_parameter(const ConstMemberFunctions& c) {
 
 ```
 
-
 While it **is** possible to [circumvent `const` correctness](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords/18511/const-cast#t=201610041626457103824), and by extension break these guarantees, this must be done intentionally by the programmer (just like breaking encapsulation with `Machiavelli`, above), and is likely to cause undefined behaviour.
 
-> 虽然**有可能[规避常量正确性](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords/18511/const-cast#t=201610041626457103824），通过扩展破坏这些保证，这必须由程序员有意完成（就像上面用“马基雅维利”破坏封装一样），并且可能导致未定义的行为。
+> 虽然**有可能[规避常量正确性]([http://stackoverflow.com/documentation/c%2B%2B/4891/keywords/18511/const-cast#t=201610041626457103824](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords/18511/const-cast#t=201610041626457103824)），通过扩展破坏这些保证，这必须由程序员有意完成（就像上面用“马基雅维利”破坏封装一样），并且可能导致未定义的行为。
 
 ```cpp
 class DealBreaker : public ConstMemberFunctions {
@@ -522,15 +494,11 @@ d.no_guarantees(); // Undefined behaviour: d really IS const, it may or may not 
 
 ```
 
-
-However, due to this requiring the programmer to very specifically **tell** the compiler that they intend to ignore `const`ness, and being inconsistent across compilers, it is generally safe to assume that `const` correct code will refrain from doing so unless otherwise specified.
+However, due to this requiring the programmer to very specifically **tell** the compiler that they intend to ignore `const` ness, and being inconsistent across compilers, it is generally safe to assume that `const` correct code will refrain from doing so unless otherwise specified.
 
 > 然而，由于这需要程序员非常明确地**告诉**编译器他们打算忽略“常量”，并且在编译器之间不一致，因此通常可以安全地假设“常量”正确代码不会这样做，除非另有规定。
 
-
-
 #### Syntax
-
 
 - class ClassOne { public: bool non_modifying_member_function() const { /* ... */ } };
 - int ClassTwo::non_modifying_member_function() const { /* ... */ }
@@ -539,18 +507,13 @@ However, due to this requiring the programmer to very specifically **tell** the 
 - float parameter_modifying_function(ClassTwo& one, ClassOne* two) { /* ... */ }
 - short ClassThree::non_modding_non_param_modding_f(const ClassOne&) const { /* ... */ }
 
-
-
 #### Remarks
 
-
 `const` correctness is a very useful troubleshooting tool, as it allows the programmer to quickly determine which functions might be inadvertently modifying code.  It also prevents unintentional errors, such as the one shown in `Const Correct Function Parameters`, from compiling properly and going unnoticed.
-
 
 It is much easier to design a class for `const` correctness, than it is to later add `const` correctness to a pre-existing class.  If possible, design any class that **can** be `const` correct so that it **is** `const` correct, to save yourself and others the hassle of later modifying it.
 
 > 为“const”正确性设计一个类要比以后将“const“正确性添加到预先存在的类中容易得多。如果可能的话，设计任何一个**可以**为“const”正确的类，使其**为“const”正确，这样可以省去您自己和他人以后修改它的麻烦。
-
 
 Note that this can also be applied to `volatile` correctness if necessary, with the same rules as for `const` correctness, but this is used much less often.
 
@@ -560,13 +523,10 @@ Refrences :
 
 [ISO_CPP](https://isocpp.org/wiki/faq/const-correctness)
 
-
 [Sell me on const correctness](http://stackoverflow.com/questions/136880/sell-me-on-const-correctness)
 
 > [向我推销常量正确性](http://stackoverflow.com/questions/136880/sell-me-on-const-correctness)
 
-
 [C++ Tutorial](http://www.cprogramming.com/tutorial/const_correctness.html)
 
-> [C++教程](http://www.cprogramming.com/tutorial/const_correctness.html)
-
+> [C++ 教程](http://www.cprogramming.com/tutorial/const_correctness.html)

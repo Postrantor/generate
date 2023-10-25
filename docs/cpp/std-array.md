@@ -2,23 +2,18 @@
 tip: translate by baidu@2023-10-25 08:32:02
 ---
 ---
+
 metaTitle: "C++ | std::array"
 description: "Initializing an std::array, Element access, Iterating through the Array, Checking size of the Array, Changing all array elements at once"
----
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # std::array
 
-
-
-
 ## Initializing an std::array
-
-
 
 **Initializing `std::array<T, N>`, where `T` is a scalar type and `N` is the number of elements of type `T`**
 
-> **正在初始化“std:：array＜T，N＞”，其中“T”是标量类型，“N”是类型为“T”的元素数`**
-
+> **正在初始化“std:：array＜T，N＞”，其中“T”是标量类型，“N”是类型为“T”的元素数 `**
 
 If `T` is a scalar type, `std::array` can be initialized in the following ways:
 
@@ -43,7 +38,6 @@ std::array<int, 3> a = std::array<int, 3>{ 0, 1, 2 };
 
 <strong>Initializing `std::array<T, N>`, where `T` is a non-scalar type and `N` is the
 number of elements of type `T`</strong>
-
 
 If `T` is a non-scalar type `std::array` can be initialized in the following ways:
 
@@ -79,13 +73,9 @@ std::array<A, 2> a = std::array<A, 2>{ 0, 1, 2, 3, 4, 5 };
 
 ```
 
-
-
 ## Element access
 
-
 **1. `at(pos)`**
-
 
 Returns a reference to the element at position `pos` with bounds checking. If `pos` is not within the range of the container, an exception of type `std::out_of_range` is thrown.
 
@@ -117,7 +107,6 @@ int main()
 
 **2) `operator[pos]`**
 
-
 Returns a reference to the element at position `pos` without bounds checking.  If `pos` is not within the range of the container, a runtime **segmentation violation** error can occur. This method provides element access equivalent to classic arrays and thereof more efficient than `at(pos)`.
 
 > 返回对位置“pos”处元素的引用，而不进行边界检查。如果“pos”不在容器的范围内，则可能发生运行时**分段冲突**错误。这种方法提供了相当于经典数组的元素访问，并且比“at（pos）”更有效。
@@ -147,7 +136,6 @@ int main()
 ```
 
 **3) `std::get<pos>`**
-
 
 This **non-member** function returns a reference to the element at **compile-time constant** position `pos` without bounds checking. If `pos` is not within the range of the container, a runtime **segmentation violation** error can occur.
 
@@ -179,17 +167,15 @@ int main()
 
 **4) `front()`**
 
-
 Returns a reference to the first element in container. Calling `front()` on an empty container is undefined.
 
 > 返回对容器中第一个元素的引用。对空容器调用“front（）”是未定义的。
 
 The complexity is constant O(1).
 
-
 **Note:** For a container c, the expression `c.front()` is equivalent to `*c.begin()`.
 
-> **注意：**对于容器c，表达式“c.front（）”等效于“*.c.begin（）”。
+> **注意：**对于容器 c，表达式“c.front（）”等效于“*.c.begin（）”。
 
 ```cpp
 #include <array>
@@ -228,7 +214,6 @@ int main()
 
 **6) `data()`**
 
-
 Returns pointer to the underlying array serving as element storage. The pointer is such that `range [data(); data() + size())` is always a valid range, even if the container is empty (`data()` is not dereferenceable in that case).
 
 > 返回指向用作元素存储的基础数组的指针。指针使得“range[data（）；data（）+size（））”始终是一个有效的范围，即使容器是空的（在这种情况下，“data（）”是不可取消引用的）。
@@ -254,10 +239,7 @@ int main ()
 
 ```
 
-
-
 ## Iterating through the Array
-
 
 `std::array` being a STL container, can use range-based for loop similar to other containers like `vector`
 
@@ -270,11 +252,7 @@ int main() {
 
 ```
 
-
-
 ## Checking size of the Array
-
-
 
 One of the main advantage of `std::array` as compared to `C` style array is that we can check the size of the array using `size()` member function
 
@@ -289,11 +267,7 @@ int main() {
 
 ```
 
-
-
 ## Changing all array elements at once
-
-
 
 The member function `fill()` can be used on `std::array` for changing the values at once post initialization
 
@@ -310,23 +284,15 @@ int main() {
 
 ```
 
-
-
 #### Parameters
 
-
-|Parameter|Definition
-|---|---|---|---|---|---|---|---|---|---
-|`class T`|Specifies the data type of array members
-|`std::size_t N`|Specifies the number of members in the array
-
-
+| Parameter       | Definition                                   |  |  |  |  |  |  |  |  |
+| --------------- | -------------------------------------------- | - | - | - | - | - | - | - | - |
+| `class T`       | Specifies the data type of array members     |  |  |  |  |  |  |  |  |
+| `std::size_t N` | Specifies the number of members in the array |  |  |  |  |  |  |  |  |
 
 #### Remarks
-
-
 
 Use of a `std::array` requires the inclusion of the `<array>` header using `#include <array>`.
 
 > 使用“std:：array”需要使用“#include＜array＞”包含“＜array>”标头。
-

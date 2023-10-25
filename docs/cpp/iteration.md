@@ -2,16 +2,14 @@
 tip: translate by baidu@2023-10-25 08:26:13
 ---
 ---
+
 metaTitle: "C++ | Iteration"
 description: "break, continue, do, for, while, range-based for loop"
----
+--------------------------------------------------------------------
 
 # Iteration
 
-
-
 ## break
-
 
 Jumps out of the nearest enclosing loop or `switch` statement.
 
@@ -28,10 +26,7 @@ for (const int num : num_list) {
 
 ```
 
-
-
 ## continue
-
 
 Jumps to the end of the smallest enclosing loop.
 
@@ -47,15 +42,11 @@ for (int i = 0; i < N; i++) {
 
 ```
 
-
-
 ## do
 
+Introduces a [do-while loop](http://stackoverflow.com/documentation/c%2B%2B/589/loops/7821/do-while-loop).
 
-
-Introduces a [do-while loop](http://stackoverflow.com/documentation/c%2b%2b/589/loops/7821/do-while-loop).
-
-> 引入[do-while循环](http://stackoverflow.com/documentation/c%2b%2b/589/loops/7821/do-while循环）。
+> 引入[do-while 循环]([http://stackoverflow.com/documentation/c%2b%2b/589/loops/7821/do-while](http://stackoverflow.com/documentation/c%2B%2B/589/loops/7821/do-while) 循环）。
 
 ```cpp
 // Gets the next non-whitespace character from standard input
@@ -69,15 +60,11 @@ char read_char() {
 
 ```
 
-
-
 ## for
 
+Introduces a [for loop](http://stackoverflow.com/documentation/c%2B%2B/589/loops/1945/for-loop) or, in C++11 and later, a [range-based for loop](http://stackoverflow.com/documentation/c%2B%2B/589/loops/1926/range-based-for).
 
-
-Introduces a [for loop](http://stackoverflow.com/documentation/c%2b%2b/589/loops/1945/for-loop) or, in C++11 and later, a [range-based for loop](http://stackoverflow.com/documentation/c%2b%2b/589/loops/1926/range-based-for).
-
-> 引入[for循环](http://stackoverflow.com/documentation/c%2b%2b/589/loops/1945/for-循环），或者在C++11及更高版本中，[基于循环的范围](http://stackoverflow.com/documentation/c%2b%2b/589/loops/1926/range-基于）。
+> 引入[for 循环]([http://stackoverflow.com/documentation/c%2b%2b/589/loops/1945/for](http://stackoverflow.com/documentation/c%2B%2B/589/loops/1945/for)-循环），或者在 C++11 及更高版本中，[基于循环的范围]([http://stackoverflow.com/documentation/c%2b%2b/589/loops/1926/range](http://stackoverflow.com/documentation/c%2B%2B/589/loops/1926/range)-基于）。
 
 ```cpp
 // print 10 asterisks
@@ -87,15 +74,11 @@ for (int i = 0; i < 10; i++) {
 
 ```
 
-
-
 ## while
-
-
 
 Introduces a [while loop](http://stackoverflow.com/documentation/c%2B%2B/589/loops/3301/while-loop#t=201611112017446296865).
 
-> 引入[while循环](http://stackoverflow.com/documentation/c%2B%2B/589/loops/3301/while-循环#t=201611112017446296865）。
+> 引入[while 循环]([http://stackoverflow.com/documentation/c%2B%2B/589/loops/3301/while](http://stackoverflow.com/documentation/c%2B%2B/589/loops/3301/while)-循环#t=201611112017446296865）。
 
 ```cpp
 int i = 0;
@@ -107,10 +90,7 @@ while (i < 10) {
 
 ```
 
-
-
 ## range-based for loop
-
 
 ```cpp
 std::vector<int> primes = {2, 3, 5, 7, 11, 13};
@@ -120,4 +100,3 @@ for(auto prime : primes) {
 }
 
 ```
-

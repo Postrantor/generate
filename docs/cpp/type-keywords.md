@@ -2,22 +2,20 @@
 tip: translate by baidu@2023-10-25 08:35:17
 ---
 ---
+
 metaTitle: "C++ | Type Keywords"
 description: "class, enum, struct, union"
----
+-----------------------------------------
 
 # Type Keywords
 
-
-
 ## class
-
 
 <li>
 
-Introduces the definition of a [class](http://stackoverflow.com/documentation/c%2b%2b/508/classes-structures) type.
+Introduces the definition of a [class](http://stackoverflow.com/documentation/c%2B%2B/508/classes-structures) type.
 
-> 介绍[类]的定义(http://stackoverflow.com/documentation/c%2b%2b/508/classes-结构）类型。
+> 介绍[类]的定义([http://stackoverflow.com/documentation/c%2b%2b/508/classes](http://stackoverflow.com/documentation/c%2B%2B/508/classes)-结构）类型。
 
 ```cpp
 class foo {
@@ -28,7 +26,6 @@ class foo {
 };
 
 ```
-
 
 </li>
 <li>
@@ -56,13 +53,12 @@ class foo {
 
 ```
 
-
 </li>
 <li>
 
-Introduces a type parameter in the declaration of a [template](http://stackoverflow.com/documentation/c%2b%2b/460/templates).
+Introduces a type parameter in the declaration of a [template](http://stackoverflow.com/documentation/c%2B%2B/460/templates).
 
-> 在[template]的声明中引入类型参数(http://stackoverflow.com/documentation/c%2b%2b/460/templates)。
+> 在[template]的声明中引入类型参数([http://stackoverflow.com/documentation/c%2b%2b/460/templates](http://stackoverflow.com/documentation/c%2B%2B/460/templates))。
 
 ```cpp
 template <class T>
@@ -72,13 +68,12 @@ const T& min(const T& x, const T& y) {
 
 ```
 
-
 </li>
 <li>
 
-In the declaration of a [template template parameter](http://stackoverflow.com/documentation/c%2b%2b/460/templates/10838/template-template-parameters), the keyword `class` precedes the name of the parameter. Since the argument for a template template parameter can only be a class template, the use of `class` here is redundant. However, the grammar of C++ requires it.
+In the declaration of a [template template parameter](http://stackoverflow.com/documentation/c%2B%2B/460/templates/10838/template-template-parameters), the keyword `class` precedes the name of the parameter. Since the argument for a template template parameter can only be a class template, the use of `class` here is redundant. However, the grammar of C++ requires it.
 
-> 在[template-template参数]的声明中(http://stackoverflow.com/documentation/c%2b%2b/460/templates/10838/template-模板参数），关键字“class”位于参数名称之前。由于模板模板参数的参数只能是类模板，因此此处使用“class”是多余的。然而，C++的语法需要它。
+> 在[template-template 参数]的声明中([http://stackoverflow.com/documentation/c%2b%2b/460/templates/10838/template](http://stackoverflow.com/documentation/c%2B%2B/460/templates/10838/template)-模板参数），关键字“class”位于参数名称之前。由于模板模板参数的参数只能是类模板，因此此处使用“class”是多余的。然而，C++ 的语法需要它。
 
 ```cpp
 template <template <class T> class U>
@@ -91,13 +86,12 @@ void f() {
 
 ```
 
-
 </li>
 <li>
 
 Note that sense 2 and sense 3 may be combined in the same declaration. For example:
 
-> 注意，感测2和感测3可以组合在同一声明中。例如：
+> 注意，感测 2 和感测 3 可以组合在同一声明中。例如：
 
 ```cpp
 template <class T>
@@ -108,14 +102,13 @@ foo<class bar> x; // <- bar does not have to have previously appeared.
 
 ```
 
-
 </li>
 
 <li>
 
-In the declaration or definition of an enum, declares the enum to be a [scoped enum](http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration/13318/scoped-enums#t=201608050832023792595).
+In the declaration or definition of an enum, declares the enum to be a [scoped enum](http://stackoverflow.com/documentation/c%2B%2B/2796/enumeration/13318/scoped-enums#t=201608050832023792595).
 
-> 在枚举的声明或定义中，将枚举声明为[scoped enum](http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration/13318/scoped-enums#t=201608050832023792595）。
+> 在枚举的声明或定义中，将枚举声明为[scoped enum]([http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration/13318/scoped-enums#t=201608050832023792595](http://stackoverflow.com/documentation/c%2B%2B/2796/enumeration/13318/scoped-enums#t=201608050832023792595)）。
 
 ```cpp
 enum class Format {
@@ -127,19 +120,15 @@ Format f = F::TEXT;
 
 ```
 
-
 </li>
-
-
 
 ## enum
 
-
 <li>
 
-Introduces the definition of an [enumeration type](http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration).
+Introduces the definition of an [enumeration type](http://stackoverflow.com/documentation/c%2B%2B/2796/enumeration).
 
-> 介绍[枚举类型]的定义(http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration)。
+> 介绍[枚举类型]的定义([http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration](http://stackoverflow.com/documentation/c%2B%2B/2796/enumeration))。
 
 ```cpp
 enum Direction {
@@ -152,13 +141,11 @@ Direction d = UP;
 
 ```
 
-
 </li>
 
+In C++11, `enum` may optionally be followed by `class` or `struct` to define a [scoped enum](http://stackoverflow.com/documentation/c%2B%2B/2796/enumeration/13318/scoped-enums). Furthermore, both scoped and unscoped enums can have their underlying type explicitly specified by `: T` following the enum name, where `T` refers to an integer type.
 
-In C++11, `enum` may optionally be followed by `class` or `struct` to define a [scoped enum](http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration/13318/scoped-enums). Furthermore, both scoped and unscoped enums can have their underlying type explicitly specified by `: T` following the enum name, where `T` refers to an integer type.
-
-> 在C++11中，“enum”后面可以有选择地跟“class”或“struct”，以定义[作用域枚举](http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration/13318/scoped-enums）。此外，作用域枚举和非作用域枚举都可以通过枚举名称后面的“：T”显式指定其基础类型，其中“T”表示整数类型。
+> 在 C++11 中，“enum”后面可以有选择地跟“class”或“struct”，以定义[作用域枚举]([http://stackoverflow.com/documentation/c%2b%2b/2796/enumeration/13318/scoped-enums](http://stackoverflow.com/documentation/c%2B%2B/2796/enumeration/13318/scoped-enums)）。此外，作用域枚举和非作用域枚举都可以通过枚举名称后面的“：T”显式指定其基础类型，其中“T”表示整数类型。
 
 ```
 
@@ -177,10 +164,9 @@ In C++11, `enum` may optionally be followed by `class` or `struct` to define a [
 
 ```
 
+Enumerators in normal `enum` s may also be preceded by the scope operator, although they are still considered to be in the scope the `enum` was defined in.
 
-Enumerators in normal `enum`s may also be preceded by the scope operator, although they are still considered to be in the scope the `enum` was defined in.
-
-> 普通“enum”中的枚举器前面也可能有scope运算符，尽管它们仍然被认为在定义“enum“的作用域中。
+> 普通“enum”中的枚举器前面也可能有 scope 运算符，尽管它们仍然被认为在定义“enum“的作用域中。
 
 ```
 
@@ -190,7 +176,6 @@ Enumerators in normal `enum`s may also be preceded by the scope operator, althou
    l2 = Language::OTHER;
 
 ```
-
 
 <li>
 
@@ -206,7 +191,6 @@ enum Foo foo = FOO; // ok; Foo refers to the enum type
 
 ```
 
-
 </li>
 
 <li>
@@ -217,7 +201,7 @@ Introduces an **opaque enum declaration,** which declares an enum without defini
 
 An enum first declared as scoped cannot later be declared as unscoped, or **vice versa.** All declarations of an enum must agree in underlying type.
 
-> 首先声明为scoped的枚举以后不能声明为unscoped，**反之亦然。**枚举的所有声明在基础类型中必须一致。
+> 首先声明为 scoped 的枚举以后不能声明为 unscoped，**反之亦然。**枚举的所有声明在基础类型中必须一致。
 
 When forward-declaring an unscoped enum, the underlying type must be explicitly specified, since it cannot be inferred until the values of the enumerators are known.
 
@@ -236,19 +220,13 @@ enum Direction;    // ill-formed; must specify underlying type
 
 ```
 
-
 </li>
-
-
 
 ## struct
 
+Interchangeable with [`class`](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords/18504/class), except for the following differences:
 
-
-Interchangeable with [`class`](http://stackoverflow.com/documentation/c%2b%2b/4891/keywords/18504/class), except for the following differences:
-
-> 可与[`class`]互换(http://stackoverflow.com/documentation/c%2b%2b/4891/keywords/18504/class)，除了以下差异：
-
+> 可与[`class`]互换([http://stackoverflow.com/documentation/c%2b%2b/4891/keywords/18504/class](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords/18504/class))，除了以下差异：
 
 - If a class type is defined using the keyword `struct`, then the default accessibility of bases and members is `public` rather than `private`.
 
@@ -258,16 +236,13 @@ Interchangeable with [`class`](http://stackoverflow.com/documentation/c%2b%2b/48
 
 > -“struct”不能用于声明模板类型参数或模板模板参数；只有“class”可以。
 
-
-
 ## union
-
 
 <li>
 
-Introduces the definition of a [union](http://stackoverflow.com/documentation/c%2b%2b/2678/unions) type.
+Introduces the definition of a [union](http://stackoverflow.com/documentation/c%2B%2B/2678/unions) type.
 
-> 介绍[并集]的定义(http://stackoverflow.com/documentation/c%2b%2b/2678/unions)类型。
+> 介绍[并集]的定义([http://stackoverflow.com/documentation/c%2b%2b/2678/unions](http://stackoverflow.com/documentation/c%2B%2B/2678/unions))类型。
 
 ```cpp
 // Example is from POSIX
@@ -277,7 +252,6 @@ union sigval {
 };
 
 ```
-
 
 </li>
 <li>
@@ -303,6 +277,4 @@ union foo {
 
 ```
 
-
 </li>
-

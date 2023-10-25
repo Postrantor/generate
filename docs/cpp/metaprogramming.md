@@ -2,33 +2,26 @@
 tip: translate by baidu@2023-10-25 08:27:42
 ---
 ---
+
 metaTitle: "C++ | Metaprogramming"
 description: "Calculating Factorials, Iterating over a parameter pack, Iterating with std::integer_sequence, Tag Dispatching, Detect Whether Expression is Valid, If-then-else, Calculating power with C++11 (and higher), Manual distinction of types when given any type T, Generic Min/Max with variable argument count"
----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Metaprogramming
 
-
-
 In C++ Metaprogramming refers to the use of macros or templates to generate code at compile-time.
 
-> 在C++中，元编程是指在编译时使用宏或模板生成代码。
-
+> 在 C++ 中，元编程是指在编译时使用宏或模板生成代码。
 
 In general, macros are frowned upon in this role and templates are preferred, although they are not as generic.
 
 > 一般来说，宏在这个角色中是不受欢迎的，模板是首选，尽管它们不是通用的。
 
-
 Template metaprogramming often makes use of compile-time computations, whether via templates or `constexpr` functions, to achieve its goals of generating code, however compile-time computations are not metaprogramming per se.
 
 > 模板元编程通常利用编译时计算，无论是通过模板还是“constexpr”函数，来实现生成代码的目标，然而编译时计算本身并不是元编程。
 
-
-
 ## Calculating Factorials
-
-
 
 Factorials can be computed at compile-time using template metaprogramming techniques.
 
@@ -61,16 +54,13 @@ int main()
 
 `factorial` is a struct, but in template metaprogramming it is treated as a template metafunction. By convention, template metafunctions are evaluated by checking a particular member, either `::type` for metafunctions that result in types, or `::value` for metafunctions that generate values.
 
-
 In the above code, we evaluate the `factorial` metafunction by instantiating the template with the parameters we want to pass, and using `::value` to get the result of the evaluation.
 
 > 在上面的代码中，我们通过用我们想要传递的参数实例化模板来评估“factorial”元函数，并使用“：：value”来获得评估结果。
 
-
 The metafunction itself relies on recursively instantiating the same metafunction with smaller values. The `factorial<0>` specialization represents the terminating condition. Template metaprogramming has most of the restrictions of a [functional programming language](https://en.wikipedia.org/wiki/Functional_programming), so recursion is the primary "looping" construct.
 
-> 元函数本身依赖于用较小的值递归实例化相同的元函数。“factorial＜0>”特殊化表示终止条件。模板元编程具有[函数式编程语言]的大部分限制(https://en.wikipedia.org/wiki/Functional_programming)，所以递归是主要的“循环”构造。
-
+> 元函数本身依赖于用较小的值递归实例化相同的元函数。“factorial＜0>”特殊化表示终止条件。模板元编程具有[函数式编程语言]的大部分限制([https://en.wikipedia.org/wiki/Functional_programming](https://en.wikipedia.org/wiki/Functional_programming))，所以递归是主要的“循环”构造。
 
 Since template metafunctions execute at compile time, their results can be used in contexts that require compile-time values. For example:
 
@@ -81,20 +71,17 @@ int my_array[factorial<5>::value];
 
 ```
 
-
 Automatic arrays must have a compile-time defined size. And the result of a metafunction is a compile-time constant, so it can be used here.
 
 > 自动数组必须具有编译时定义的大小。元函数的结果是一个编译时间常数，所以它可以在这里使用。
 
-
 **Limitation**: Most of the compilers won't allow recursion depth beyond a limit. For example, `g++` compiler by default limits recursion depeth to 256 levels. In case of `g++`, programmer can set recursion depth using `-ftemplate-depth-X` option.
 
-> **限制**：大多数编译器都不允许递归深度超过限制。例如，“g++”编译器默认情况下将递归限制为256级。在“g++”的情况下，程序员可以使用“-ftemplate-depth-X”选项设置递归深度。
-
+> **限制**：大多数编译器都不允许递归深度超过限制。例如，“g++”编译器默认情况下将递归限制为 256 级。在“g++”的情况下，程序员可以使用“-ftemplate-depth-X”选项设置递归深度。
 
 Since C++11, the `std::integral_constant` template can be used for this kind of template computation:
 
-> 由于C++11，“std:：integral_content”模板可用于此类模板计算：
+> 由于 C++11，“std:：integral_content”模板可用于此类模板计算：
 
 ```cpp
 #include <iostream>
@@ -133,15 +120,13 @@ int main()
 
 ```
 
-
 The body of `factorial()` is written as a single statement because in C++11 `constexpr` functions can only use a quite limited subset of the language.
 
-> “factorial（）”的主体被写成一个单独的语句，因为在C++11中，“constexpr”函数只能使用该语言的一个非常有限的子集。
-
+> “factorial（）”的主体被写成一个单独的语句，因为在 C++11 中，“constexpr”函数只能使用该语言的一个非常有限的子集。
 
 Since C++14, many restrictions for `constexpr` functions have been dropped and they can now be written much more conveniently:
 
-> 自从C++14以来，“constexpr”函数的许多限制已经被取消，现在可以更方便地编写它们：
+> 自从 C++14 以来，“constexpr”函数的许多限制已经被取消，现在可以更方便地编写它们：
 
 ```cpp
 constexpr long long factorial(long long n)
@@ -188,15 +173,11 @@ int main() {
 
 ```
 
-
-
 ## Iterating over a parameter pack
-
-
 
 Often, we need to perform an operation over every element in a variadic template parameter pack. There are many ways to do this, and the solutions get easier to read and write with C++17. Suppose we simply want to print every element in a pack. The simplest solution is to recurse:
 
-> 通常，我们需要对可变模板参数包中的每个元素执行操作。有很多方法可以做到这一点，并且使用C++17可以更容易地读取和编写解决方案。假设我们只是想打印一个包中的每个元素。最简单的解决方案是递归：
+> 通常，我们需要对可变模板参数包中的每个元素执行操作。有很多方法可以做到这一点，并且使用 C++17 可以更容易地读取和编写解决方案。假设我们只是想打印一个包中的每个元素。最简单的解决方案是递归：
 
 ```cpp
 void print_all(std::ostream& os) {
@@ -211,7 +192,6 @@ void print_all(std::ostream& os, T const& first, Ts const&... rest) {
 }
 
 ```
-
 
 We could instead use the expander trick, to perform all the streaming in a single function. This has the advantage of not needing a second overload, but has the disadvantage of less than stellar readability:
 
@@ -228,15 +208,13 @@ void print_all(std::ostream& os, Ts const&... args) {
 
 ```
 
-
 For an explanation of how this works, see [T.C's excellent answer](http://stackoverflow.com/a/25683817/2069064).
 
-> 有关其工作原理的解释，请参阅[T.C的精彩回答](http://stackoverflow.com/a/25683817/2069064)。
-
+> 有关其工作原理的解释，请参阅 [T.C 的精彩回答](http://stackoverflow.com/a/25683817/2069064)。
 
 With C++17, we get two powerful new tools in our arsenal for solving this problem. The first is a fold-expression:
 
-> 有了C++17，我们的武器库中有两个强大的新工具来解决这个问题。第一个是fold表达式：
+> 有了 C++17，我们的武器库中有两个强大的新工具来解决这个问题。第一个是 fold 表达式：
 
 ```cpp
 template <class... Ts>
@@ -245,7 +223,6 @@ void print_all(std::ostream& os, Ts const&... args) {
 }
 
 ```
-
 
 And the second is `if constexpr`, which allows us to write our original recursive solution in a single function:
 
@@ -266,10 +243,7 @@ void print_all(std::ostream& os, T const& first, Ts const&... rest) {
 
 ```
 
-
-
 ## Iterating with std::integer_sequence
-
 
 Since C++14, the standard provides the class template
 
@@ -293,15 +267,13 @@ using make_index_sequence = make_integer_sequence<std::size_t, N>;
 
 ```
 
-
 While this comes standard in C++14, this can be implemented using C++11 tools.
 
-> 虽然这是C++14中的标准配置，但可以使用C++11工具来实现。
-
+> 虽然这是 C++14 中的标准配置，但可以使用 C++11 工具来实现。
 
 We can use this tool to call a function with a `std::tuple` of arguments (standardized in C++17 as `std::apply`):
 
-> 我们可以使用此工具来调用具有参数“std:：tuple”的函数（在C++17中标准化为“std：：apply”）：
+> 我们可以使用此工具来调用具有参数“std:：tuple”的函数（在 C++17 中标准化为“std：：apply”）：
 
 ```cpp
 namespace detail {
@@ -327,11 +299,7 @@ int r = apply(f, some_args); // calls f(42, 'x', 3.14)
 
 ```
 
-
-
 ## Tag Dispatching
-
-
 
 A simple way of selecting between functions at compile time is to dispatch a function to an overloaded pair of functions that take a tag as one (usually the last) argument. For example, to implement `std::advance()`, we can dispatch on the iterator category:
 
@@ -370,11 +338,9 @@ void advance(Iter& it, Distance n) {
 
 ```
 
-
 The `std::XY_iterator_tag` arguments of the overloaded `details::advance` functions are unused function parameters. The actual implementation does not matter (actually it is completely empty). Their only purpose is to allow the compiler to select an overload based on which tag class `details::advance` is called with.
 
 > 重载的“details:：advance”函数的“std:：XY_iterator_tag”参数是未使用的函数参数。实际的实现并不重要（实际上它是完全空的）。它们的唯一目的是允许编译器根据使用哪个标记类“details:：advance”调用来选择重载。
-
 
 In this example, `advance` uses the `iterator_traits<T>::iterator_category` metafunction which returns one of the `iterator_tag` classes, depending on the actual type of `Iter`. A default-constructed object of the `iterator_category<Iter>::type` then lets the compiler select one of the different overloads of `details::advance`.
 
@@ -384,21 +350,15 @@ In this example, `advance` uses the `iterator_traits<T>::iterator_category` meta
 
 > （此函数参数可能会被完全优化掉，因为它是空“struct”的默认构造对象，从未使用过。）
 
-
 Tag dispatching can give you code that's much easier to read than the equivalents using SFINAE and `enable_if`.
 
-> 标记调度可以为您提供比使用SFINAE和“enable_if”的等效代码更容易阅读的代码。
-
+> 标记调度可以为您提供比使用 SFINAE 和“enable_if”的等效代码更容易阅读的代码。
 
 **Note: while C++17's `if constexpr` may simplify the implementation of `advance` in particular, it is not suitable for open implementations unlike tag dispatching.**
 
-> **注意：虽然C++17的“if constexpr”可以特别简化“advance”的实现，但它不适合于与标记调度不同的开放实现**
-
-
+> **注意：虽然 C++17 的“if constexpr”可以特别简化“advance”的实现，但它不适合于与标记调度不同的开放实现**
 
 ## Detect Whether Expression is Valid
-
-
 
 It is possible to detect whether an operator or function can be called on a type. To test if a class has an overload of `std::hash`, one can do this:
 
@@ -447,7 +407,6 @@ template< class... > using void_t = void;
 
 ```
 
-
 For detecting if an operator, such as `operator<` is defined, the syntax is almost the same:
 
 > 为了检测是否定义了运算符，如“operator<”，语法几乎相同：
@@ -465,7 +424,6 @@ struct has_less_than<T, decltype(std::declval<T>() < std::declval<T>(), void())>
 
 ```
 
-
 These can be used to use a `std::unordered_map<T>` if `T` has an overload for `std::hash`, but otherwise attempt to use a `std::map<T>`:
 
 > 如果“T”具有“std:：hash”的重载，则可以使用这些函数来使用“std::：unordereded_map＜T＞”，但在其他情况下尝试使用“std：：map＜T＞：
@@ -479,11 +437,7 @@ using hash_invariant_map = std::conditional_t<
 
 ```
 
-
-
 ## If-then-else
-
-
 
 The type `std::conditional` in the standard library header `<type_traits>` can select one type or the other, based on a compile-time boolean value:
 
@@ -498,20 +452,15 @@ struct ValueOrPointer
 
 ```
 
-
 This struct contains a pointer to `T` if `T` is larger than the size of a pointer, or `T` itself if it is smaller or equal to a pointer's size. Therefore `sizeof(ValueOrPointer)` will always be <= `sizeof(void*)`.
 
-> 如果“T”大于指针的大小，则此结构包含指向“T”的指针；如果“T”小于或等于指针的大小则包含指向“T”本身的指针。因此，“sizeof（ValueOrPointer）”将始终<=“sizeof”（void*）“。
-
-
+> 如果“T”大于指针的大小，则此结构包含指向“T”的指针；如果“T”小于或等于指针的大小则包含指向“T”本身的指针。因此，“sizeof（ValueOrPointer）”将始终 <=“sizeof”（void*）“。
 
 ## Calculating power with C++11 (and higher)
 
-
-
 With C++11 and higher calculations at compile time can be much easier. For example calculating the power of a given number at compile time will be following:
 
-> 使用C++11和更高版本，编译时的计算会容易得多。例如，在编译时计算给定数字的幂如下：
+> 使用 C++11 和更高版本，编译时的计算会容易得多。例如，在编译时计算给定数字的幂如下：
 
 ```cpp
 template <typename T>
@@ -521,20 +470,17 @@ constexpr T calculatePower(T value, unsigned power) {
 
 ```
 
-
 Keyword `constexpr` is responsible for calculating function in compilation time, then and only then, when all the requirements for this will be met (see more at constexpr keyword reference) for example all the arguments must be known at compile time.
 
-> 关键字“constexpr”负责在编译时计算函数，只有在满足所有要求时（请参阅constexpr关键字引用中的更多信息），例如，所有参数都必须在编译时已知。
-
+> 关键字“constexpr”负责在编译时计算函数，只有在满足所有要求时（请参阅 constexpr 关键字引用中的更多信息），例如，所有参数都必须在编译时已知。
 
 Note: In C++11 `constexpr` function must compose only from one return statement.
 
-> 注意：在C++11中，“constexpr”函数只能由一条返回语句组成。
-
+> 注意：在 C++11 中，“constexpr”函数只能由一条返回语句组成。
 
 Advantages: Comparing this to the standard way of compile time calculation, this method is also useful for runtime calculations. It means, that if the arguments of the function are not known at the compilation time (e.g. value and power are given as input via user), then function is run in a compilation time, so there's no need to duplicate a code (as we would be forced in older standards of C++).
 
-> 优点：与编译时间计算的标准方法相比，这种方法对运行时计算也很有用。这意味着，如果函数的参数在编译时是未知的（例如，值和幂是通过用户输入的），那么函数是在编译时运行的，因此不需要复制代码（因为我们在旧的C++标准中会被迫这样做）。
+> 优点：与编译时间计算的标准方法相比，这种方法对运行时计算也很有用。这意味着，如果函数的参数在编译时是未知的（例如，值和幂是通过用户输入的），那么函数是在编译时运行的，因此不需要复制代码（因为我们在旧的 C++ 标准中会被迫这样做）。
 
 E.g.
 
@@ -551,10 +497,9 @@ void useExample() {
 
 ```
 
-
 Another way to calculate power at compile time can make use of fold expression as follows:
 
-> 编译时计算幂的另一种方法可以使用fold表达式，如下所示：
+> 编译时计算幂的另一种方法可以使用 fold 表达式，如下所示：
 
 ```cpp
 #include <iostream>
@@ -574,21 +519,15 @@ int main() {
 
 ```
 
-
-
 ## Manual distinction of types when given any type T
 
+When implementing [SFINAE](http://stackoverflow.com/documentation/c%2B%2B/1169/sfinae-substitution-failure-is-not-an-error#t=201607250635342308267) using [`std::enable_if`](http://stackoverflow.com/documentation/c%2B%2B/1169/sfinae-substitution-failure-is-not-an-error/3777/enable-if), it is often useful to have access to helper templates that determines if a given type `T` matches a set of criteria.
 
-
-When implementing [SFINAE](http://stackoverflow.com/documentation/c%2b%2b/1169/sfinae-substitution-failure-is-not-an-error#t=201607250635342308267) using [`std::enable_if`](http://stackoverflow.com/documentation/c%2b%2b/1169/sfinae-substitution-failure-is-not-an-error/3777/enable-if), it is often useful to have access to helper templates that determines if a given type `T` matches a set of criteria.
-
-> 执行[SFINAE]时(http://stackoverflow.com/documentation/c%2b%2b/1169/sfinae-替换失败不是使用[`std:：enable_if`]的错误#t=201607250635342308267）(http://stackoverflow.com/documentation/c%2b%2b/1169/sfinae-替换失败不是错误/33777/enable-if），访问帮助模板来确定给定类型“T”是否匹配一组标准通常是有用的。
-
+> 执行[SFINAE]时([http://stackoverflow.com/documentation/c%2b%2b/1169/sfinae](http://stackoverflow.com/documentation/c%2B%2B/1169/sfinae)-替换失败不是使用[`std:：enable_if`]的错误#t=201607250635342308267）([http://stackoverflow.com/documentation/c%2b%2b/1169/sfinae](http://stackoverflow.com/documentation/c%2B%2B/1169/sfinae)-替换失败不是错误/33777/enable-if），访问帮助模板来确定给定类型“T”是否匹配一组标准通常是有用的。
 
 To help us with that, the standard already provides two types analog to `true` and `false` which are `std::true_type` and `std::false_type`.
 
 > 为了帮助我们做到这一点，该标准已经提供了两种类似于“true”和“false”的类型，即“std:：true_type”和“std::：false _type”。
-
 
 The following example show how to detect if a type `T` is a pointer or not, the `is_pointer` template mimic the behavior of the standard `std::is_pointer` helper:
 
@@ -613,31 +552,32 @@ There are three steps in the above code (sometimes you only need two):
 The first declaration of `is_pointer_` is the **default case**, and inherits from `std::false_type`. The **default** case should always inherit from `std::false_type` since it is analogous to a "`false` condition".
 
 > “is_pointer_”的第一个声明是**默认大小写**，它继承自“std:：false _type”。**默认**大小写应始终继承自“std:：false _type”，因为它类似于“false”条件。
+
 </li>
 <li>
 
 The second declaration specialize the `is_pointer_` template for pointer `T*` without caring about what `T` is really. This version inherits from `std::true_type`.
 
 > 第二个声明专门化指针“T*”的“is_pointer_”模板，而不关心“T”到底是什么。此版本继承自“std:：true_type”。
+
 </li>
 <li>
 
 The third declaration (the real one) simply remove any unnecessary information from `T` (in this case we remove `const` and `volatile` qualifiers) and then fall backs to one of the two previous declarations.
 
 > 第三个声明（真正的声明）只是从“T”中删除任何不必要的信息（在这种情况下，我们删除了“const”和“volatile”限定符），然后返回到前两个声明之一。
+
 </li>
 
 Since `is_pointer<T>` is a class, to access its value you need to either:
 
-
 - Use `::value`, e.g. `is_pointer<int>::value` – `value` is a static class member of type `bool` inherited from `std::true_type` or `std::false_type`;
 
-> -使用`:：value`，例如`is_pointer<int>：：value`–`value`是继承自`std:：true_type`或`std::false _type`的类型为`bool`的静态类成员；
+> -使用 `:：value`，例如 `is_pointer<int>：：value`–`value` 是继承自 `std:：true_type` 或 `std::false _type` 的类型为 `bool` 的静态类成员；
 
 - Construct an object of this type, e.g. `is_pointer<int>{}` – This works because `std::is_pointer` inherits its default constructor from `std::true_type` or `std::false_type` (which have `constexpr` constructors) and both `std::true_type` and `std::false_type` have `constexpr` conversion operators to `bool`.
 
 > -构造此类型的对象，例如“is_pointer＜int＞｛｝”–这之所以有效，是因为“std:：is_pointer'”从“std：：true_type”或“std::：false_type”（具有“constexpr”构造函数）继承了其默认构造函数，并且“std:”true_type“和“std:。
-
 
 It is a good habit to provides "helper helper templates" that let you directly access the value:
 
@@ -649,10 +589,9 @@ constexpr bool is_pointer_v = is_pointer<T>::value;
 
 ```
 
-
 In C++17 and above, most helper templates already provide a `_v` version, e.g.:
 
-> 在C++17及以上版本中，大多数帮助模板已经提供了“_v”版本，例如：
+> 在 C++17 及以上版本中，大多数帮助模板已经提供了“_v”版本，例如：
 
 ```cpp
 template< class T > constexpr bool is_pointer_v = is_pointer<T>::value;
@@ -660,11 +599,7 @@ template< class T > constexpr bool is_reference_v = is_reference<T>::value;
 
 ```
 
-
-
 ## Generic Min/Max with variable argument count
-
-
 
 It's possible to write a generic function (for example `min`) which accepts various numerical types and arbitrary argument count by template meta-programming. This function declares a `min` for two arguments and recursively for more.
 
@@ -689,13 +624,8 @@ auto minimum = min(4, 5.8f, 3, 1.8, 3, 1.1, 9);
 
 ```
 
-
-
 #### Remarks
-
-
 
 Metaprogramming (or more specifically, Template Metaprogramming) is the practice of using [templates](http://stackoverflow.com/documentation/c%2B%2B/460/templates/3999/basic-class-template#t=201607281319383275025) to create constants, functions, or data structures at compile-time. This allows computations to be performed once at compile time rather than at each run time.
 
-> 元编程（或者更具体地说，模板元编程）是使用[模板]的实践(http://stackoverflow.com/documentation/c%2B%2B/460/templates/3999/basic-类模板#t=201607281319383275025），以在编译时创建常量、函数或数据结构。这允许在编译时执行一次计算，而不是在每次运行时执行。
-
+> 元编程（或者更具体地说，模板元编程）是使用[模板]的实践([http://stackoverflow.com/documentation/c%2B%2B/460/templates/3999/basic](http://stackoverflow.com/documentation/c%2B%2B/460/templates/3999/basic)-类模板#t=201607281319383275025），以在编译时创建常量、函数或数据结构。这允许在编译时执行一次计算，而不是在每次运行时执行。

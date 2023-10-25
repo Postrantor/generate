@@ -2,17 +2,14 @@
 tip: translate by baidu@2023-10-25 08:20:31
 ---
 ---
+
 metaTitle: "C++ | Atomic Types"
 description: "Multi-threaded Access"
----
+------------------------------------
 
 # Atomic Types
 
-
-
 ## Multi-threaded Access
-
-
 
 An atomic type can be used to safely read and write to a memory location shared between two threads.
 
@@ -57,7 +54,6 @@ int main() {
 }
 
 ```
-
 
 The above example may cause a corrupted read and can lead to undefined behavior.
 
@@ -104,23 +100,15 @@ int main() {
 
 ```
 
-
 The above example is safe because all `store()` and `load()` operations of the `atomic` data type protect the encapsulated `int` from simultaneous access.
 
 > 上面的例子是安全的，因为“atomic”数据类型的所有“store（）”和“load（）”操作都保护封装的“int”不被同时访问。
 
-
-
 #### Syntax
-
 
 - std::atomic<T>
 - std::atomic_flag
 
-
-
 #### Remarks
 
-
 `std::atomic` allows atomic access to a TriviallyCopyable type, it is implementation-dependent if this is done via atomic operations or by using locks. The only guaranteed lock-free atomic type is `std::atomic_flag`.
-

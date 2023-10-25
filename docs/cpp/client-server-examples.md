@@ -2,21 +2,18 @@
 tip: translate by baidu@2023-10-25 08:22:24
 ---
 ---
+
 metaTitle: "C++ | Client server examples"
 description: "Hello TCP Client, Hello TCP Server"
----
+-------------------------------------------------
 
 # Client server examples
 
-
-
 ## Hello TCP Client
-
-
 
 This program is complimentary to Hello TCP Server program, you can run either of them to check the validity of each other. The program flow is quite common with Hello TCP server, so make sure to take a look at that too.
 
-> 该程序是Hello TCP Server程序的补充，您可以运行它们中的任何一个来检查彼此的有效性。HelloTCP服务器的程序流非常常见，所以一定要看一看。
+> 该程序是 Hello TCP Server 程序的补充，您可以运行它们中的任何一个来检查彼此的有效性。HelloTCP 服务器的程序流非常常见，所以一定要看一看。
 
 Here's the code -
 
@@ -102,16 +99,11 @@ int main(int argc, char *argv[])
 
 ```
 
-
-
 ## Hello TCP Server
-
-
 
 Let me start by saying you should first visit [Beej's Guide to Network Programming](https://beej.us/guide/bgnet/output/html/singlepage/bgnet.html) and give it a quick read, which explains most of this stuff a bit more verbosely. We'll be creating a simple TCP server here which will say "Hello World" to all incoming connections and then close them. Another thing to note is, the server will be communicating to clients iteratively, which means one client at a time. Make sure to check out relevant man pages as they might contain valuable information about each function call and socket structures.
 
-> 让我首先说你应该先访问[Beej的网络编程指南](https://beej.us/guide/bgnet/output/html/singlepage/bgnet.html)快速阅读一下，这就更详细地解释了大部分内容。我们将在这里创建一个简单的TCP服务器，它会对所有传入的连接说“你好，世界”，然后关闭它们。另一件需要注意的事情是，服务器将迭代地与客户端通信，这意味着一次只与一个客户端通信。请务必查看相关的手册页，因为它们可能包含有关每个函数调用和套接字结构的有价值的信息。
-
+> 让我首先说你应该先访问 [Beej 的网络编程指南](https://beej.us/guide/bgnet/output/html/singlepage/bgnet.html)快速阅读一下，这就更详细地解释了大部分内容。我们将在这里创建一个简单的 TCP 服务器，它会对所有传入的连接说“你好，世界”，然后关闭它们。另一件需要注意的事情是，服务器将迭代地与客户端通信，这意味着一次只与一个客户端通信。请务必查看相关的手册页，因为它们可能包含有关每个函数调用和套接字结构的有价值的信息。
 
 We'll run the server with a port, so we'll take an argument for port number as well. Let's get started with code -
 
@@ -295,4 +287,3 @@ Detecting addresses
 Enter the number of host address to bind with: 1
 
 ```
-

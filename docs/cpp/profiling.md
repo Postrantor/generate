@@ -2,21 +2,18 @@
 tip: translate by baidu@2023-10-25 08:30:07
 ---
 ---
+
 metaTitle: "C++ | Profiling"
 description: "Profiling with gcc and gprof, Generating callgraph diagrams with gperf2dot, Profiling CPU Usage with gcc and Google Perf Tools"
----
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 # Profiling
 
-
-
 ## Profiling with gcc and gprof
-
-
 
 The GNU gprof profiler, [gprof](https://sourceware.org/binutils/docs/gprof/), allows you to profile your code. To use it, you need to perform the following steps:
 
-> GNU gprof探查器[gprof](https://sourceware.org/binutils/docs/gprof/)，允许您评测代码。要使用它，您需要执行以下步骤：
+> GNU gprof 探查器 [gprof](https://sourceware.org/binutils/docs/gprof/)，允许您评测代码。要使用它，您需要执行以下步骤：
 
 <li>
 Build the application with settings for generating profiling information
@@ -27,7 +24,6 @@ Generate profiling information by running the built application
 <li>
 View the generated profiling information with gprof
 </li>
-
 
 In order to build the application with settings for generating profiling information, we add the `-pg` flag. So, for example, we could use
 
@@ -63,7 +59,6 @@ $ gprof app gmon.out
 
 ```
 
-
 (note that we provide both the application as well as the generated output).
 
 > （请注意，我们同时提供应用程序和生成的输出）。
@@ -77,25 +72,19 @@ $ gprof app gmon.out | less
 
 and so forth.
 
-
 The result of the last command should be a table, whose rows are the functions, and whose columns indicate the number of calls, total time spent, self time spent (that is, time spent in the function excluding calls to children).
 
 > 最后一个命令的结果应该是一个表，其行是函数，其列指示调用次数、花费的总时间、花费的自身时间（即，在函数中花费的时间，不包括对子函数的调用）。
 
-
-
 ## Generating callgraph diagrams with gperf2dot
-
-
 
 For more complex applications, flat execution profiles may be difficult to follow. This is why many profiling tools also generate some form of annotated callgraph information.
 
 > 对于更复杂的应用程序，平面执行概要文件可能很难遵循。这就是为什么许多评测工具也会生成某种形式的带注释的调用图信息。
 
-
 [gperf2dot](https://github.com/jrfonseca/gprof2dot) converts text output from many profilers (Linux perf, callgrind, oprofile etc.) into a callgraph diagram. You can use it by running your profiler (example for `gprof`):
 
-> [gperf2dot](https://github.com/jrfonseca/gprof2dot)将许多评测器（Linuxperf、callgrind、oprofile等）的文本输出转换为调用图。您可以通过运行探查器来使用它（例如“gprof”）：
+> [gperf2dot](https://github.com/jrfonseca/gprof2dot) 将许多评测器（Linuxperf、callgrind、oprofile 等）的文本输出转换为调用图。您可以通过运行探查器来使用它（例如“gprof”）：
 
 ```cpp
 # compile with profiling flags  
@@ -107,25 +96,19 @@ gprof ./main | gprof2dot -s | dot -Tpng -o output.png
 
 ```
 
-
 [<img src="http://i.stack.imgur.com/QDQA0.png" alt="enter image description here" />](http://i.stack.imgur.com/QDQA0.png)
 
 > [<img src=“http://i.stack.imgur.com/QDQA0.png“alt=”在此处输入图像描述“/>](http://i.stack.imgur.com/QDQA0.png)
 
-
-
 ## Profiling CPU Usage with gcc and Google Perf Tools
-
-
 
 [Google Perf Tools](https://github.com/gperftools/gperftools) also provides a CPU profiler, with a slightly friendlier interface. To use it:
 
-> [谷歌Perf工具](https://github.com/gperftools/gperftools)还提供了一个CPU探查器，接口稍微友好一些。要使用它：
+> [谷歌 Perf 工具](https://github.com/gperftools/gperftools)还提供了一个 CPU 探查器，接口稍微友好一些。要使用它：
 
 1. [Install Google Perf Tools](https://github.com/gperftools/gperftools)
-1. Compile your code as usual
-
-1. Add the `libprofiler` profiler library to your library load path at runtime
+2. Compile your code as usual
+3. Add the `libprofiler` profiler library to your library load path at runtime
 
 > 1.在运行时将“libprofiler”探查器库添加到库加载路径中
 
@@ -190,4 +173,3 @@ Total: 67 samples
 pprof --pdf ./main main.prof > out.pdf
 
 ```
-

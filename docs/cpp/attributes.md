@@ -2,31 +2,26 @@
 tip: translate by baidu@2023-10-25 08:20:32
 ---
 ---
+
 metaTitle: "C++ | Attributes"
 description: "[[fallthrough]], [[deprecated]] and [[deprecated(reason)]], [[nodiscard]], [[noreturn]], [[maybe_unused]]"
----
+------------------------------------------------------------------------------------------------------------------------
 
 # Attributes
 
-
-
-
 ## [[fallthrough]]
-
-
 
 Whenever a `case` is ended in a `switch`, the code of the next case will get executed. This last one can be prevented by using the ´break` statement.
 
-> 每当“case”以“switch”结束时，就会执行下一个case的代码。最后一个可以通过使用“break”语句来防止。
+> 每当“case”以“switch”结束时，就会执行下一个 case 的代码。最后一个可以通过使用“break”语句来防止。
 
 As this so-called fallthrough behavior can introduce bugs when not intended, several compilers and static analyzers give a warning on this.
 
 > 由于这种所谓的失败行为可能会在无意中引入错误，因此一些编译器和静态分析器会对此发出警告。
 
-
 From C++17 on, a standard attribute was introduced to indicate that the warning is not needed when the code is meant to fall through.
 
-> 从C++17开始，引入了一个标准属性来指示当代码即将失败时不需要警告。
+> 从 C++17 开始，引入了一个标准属性来指示当代码即将失败时不需要警告。
 
 Compilers can safely give warnings when a case is ended without `break` or `[[fallthrough]]` and has at least one statement.
 
@@ -46,20 +41,15 @@ switch(input) {
 
 ```
 
-
 See [the proposal](https://isocpp.org/files/papers/P0188R0.pdf) for more detailed examples on how `[[fallthrough]]` can be used.
 
 > 参见[建议书](https://isocpp.org/files/papers/P0188R0.pdf)有关如何使用“[[fallsthrough]]”的更详细示例。
 
-
-
 ## [[deprecated]] and [[deprecated("reason")]]
-
-
 
 C++14 introduced a standard way of deprecating functions via attributes. `[[deprecated]]` can be used to indicate that a function is deprecated. `[[deprecated("reason")]]` allows adding a specific reason which can be shown by the compiler.
 
-> C++14引入了一种通过属性来弃用函数的标准方法`[[deprecated]]`可用于表示函数已被弃用`[[deprecated（“reason”）]]`允许添加编译器可以显示的特定原因。
+> C++14 引入了一种通过属性来弃用函数的标准方法 `[[deprecated]]` 可用于表示函数已被弃用 `[[deprecated（“reason”）]]` 允许添加编译器可以显示的特定原因。
 
 ```cpp
 void function(std::unique_ptr<A> &&a);
@@ -84,16 +74,11 @@ This attribute may be applied to:
 - an enumeration
 - a template specialization
 
-
 (ref. [c++14 standard draft](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3797.pdf): 7.6.5  Deprecated attribute)
 
-> （参考[c++14标准草案](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3797.pdf)：7.6.5不推荐的属性）
-
-
+> （参考 [c++14 标准草案](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3797.pdf)：7.6.5 不推荐的属性）
 
 ## [[nodiscard]]
-
-
 
 The `[[nodiscard]]` attribute can be used to indicate that the return value of a function shouldn't be ignored when you do a function call. If the return value is ignored, the compiler should give a warning on this. The attribute can be added to:
 
@@ -101,7 +86,6 @@ The `[[nodiscard]]` attribute can be used to indicate that the return value of a
 
 - A function definition
 - A type
-
 
 Adding the attribute to a type has the same behaviour as adding the attribute to every single function which returns this type.
 
@@ -123,27 +107,21 @@ void f(int &i) {
 
 ```
 
-
 See [the proposal](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf) for more detailed examples on how `[[nodiscard]]` can be used.
 
 > 参见[建议书](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf)有关如何使用“[[nodiscard]]”的更详细示例。
 
+**Note:** The implementation details of `Finally`/`onExit` are omitted in the example, see [Finally/ScopeExit](http://stackoverflow.com/documentation/c%2B%2B/1320/raii-resource-acquisition-is-initialization/4551/finally-scopeexit).
 
-**Note:** The implementation details of `Finally`/`onExit` are omitted in the example, see [Finally/ScopeExit](http://stackoverflow.com/documentation/c%2b%2b/1320/raii-resource-acquisition-is-initialization/4551/finally-scopeexit).
-
-> **注意：**示例中省略了`Finally `/`onExit`的实现细节，请参见[Finally/ScopeExit](http://stackoverflow.com/documentation/c%2b%2b/1320/raii-资源获取是初始化/4551/最终scopeexit）。
-
-
+> **注意：**示例中省略了 `Finally `/`onExit` 的实现细节，请参见[Finally/ScopeExit]([http://stackoverflow.com/documentation/c%2b%2b/1320/raii](http://stackoverflow.com/documentation/c%2B%2B/1320/raii)-资源获取是初始化/4551/最终 scopeexit）。
 
 ## [[noreturn]]
-
 
 C++11 introduced the `[[noreturn]]` attribute.
 
 It can be used for a function to indicate that the function does not return to the caller by either executing a **return** statement, or by reaching the end if it's body (it is important to note that this does not apply to `void` functions, since they do return to the caller, they just do not return any value). Such a function may end by calling `std::terminate` or `std::exit`, or by throwing an exception. It is also worth noting that such a function can return by executing `longjmp`.
 
-> 它可以用于函数，通过执行**return**语句，或者如果函数是body，则通过到达末尾来指示函数不会返回给调用者（需要注意的是，这不适用于“void”函数，因为它们确实返回给调用者，只是不返回任何值）。这样的函数可以通过调用“std:：terminate”或“std::：exit”或抛出异常来结束。同样值得注意的是，这样的函数可以通过执行“longjmp”返回。
-
+> 它可以用于函数，通过执行 **return** 语句，或者如果函数是 body，则通过到达末尾来指示函数不会返回给调用者（需要注意的是，这不适用于“void”函数，因为它们确实返回给调用者，只是不返回任何值）。这样的函数可以通过调用“std:：terminate”或“std::：exit”或抛出异常来结束。同样值得注意的是，这样的函数可以通过执行“longjmp”返回。
 
 For instance, the function below will always either throw an exception or call `std::terminate`, so it is a good candidate for `[[noreturn]]`:
 
@@ -158,7 +136,6 @@ For instance, the function below will always either throw an exception or call `
 }
 
 ```
-
 
 This kind of functionality allows the compiler to end a function without a return statement if it knows the code will never be executed. Here, because the call to `ownAssertFailureHandler` (defined above) in the code below will never return, the compiler does not need to add code below that call:
 
@@ -179,7 +156,6 @@ std::vector<int> createSequence(int end) {
 
 ```
 
-
 It is undefined behavior if the function will actually return, so the following is not allowed:
 
 > 如果函数实际返回，则这是未定义的行为，因此不允许出现以下情况：
@@ -194,10 +170,9 @@ It is undefined behavior if the function will actually return, so the following 
 
 ```
 
-
 Note that the `[[noreturn]]` is mostly used in void functions. However, this is not a requirement, allowing the functions to be used in generic programming:
 
-> 请注意，“[[noreturn]]”主要用于void函数中。然而，这不是一项要求，允许在通用编程中使用函数：
+> 请注意，“[[noreturn]]”主要用于 void 函数中。然而，这不是一项要求，允许在通用编程中使用函数：
 
 ```cpp
 template<class InconsistencyHandler>
@@ -231,16 +206,11 @@ The following standard library functions have this attribute:
 - std::throw_with_nested
 - std::nested_exception::rethrow_nested
 
-
-
 ## [[maybe_unused]]
-
-
 
 The `[[maybe_unused]]` attribute is created for indicating in code that certain logic might not be used. This if often linked to preprocessor conditions where this might be used or might not be used. As compilers can give warnings on unused variables, this is a way of suppressing them by indicating intent.
 
 > 创建“[[maybe_unused]]”属性是为了在代码中指示可能不使用某些逻辑。这通常与预处理器条件有关，在预处理器条件下可能使用或不使用。由于编译器可以对未使用的变量发出警告，因此这是一种通过指示意图来抑制它们的方法。
-
 
 A typical example of variables which are needed in debug builds while unneeded in production are return values indicating success. In the debug builds, the condition should be asserted, though in production these asserts have been removed.
 
@@ -251,7 +221,6 @@ A typical example of variables which are needed in debug builds while unneeded i
 assert(mapInsertResult.second); // We only get called during startup, so we can't be in the map
 
 ```
-
 
 A more complex example are different kind of helper functions which are in an unnamed namespace. If these functions aren't used during compilation, a compiler might give a warning on them. Ideally you would like to guard them with the same preprocessor tags as the caller, though as this might become complex the `[[maybe_unused]]` attribute is a more maintainable alternative.
 
@@ -276,15 +245,11 @@ std::string createConfigFilePath(const std::string &relativePath) {
 
 ```
 
-
 See [the proposal](https://isocpp.org/files/papers/P0212R0.pdf) for more detailed examples on how `[[maybe_unused]]` can be used.
 
 > 参见[建议书](https://isocpp.org/files/papers/P0212R0.pdf)有关如何使用“[[maybe_unused]]”的更详细示例。
 
-
-
 #### Syntax
-
 
 <li>
 [[details]]: Simple no-argument attribute
@@ -298,4 +263,3 @@ __attribute(details): Non-standard GCC/Clang/IBM specific
 <li>
 __declspec(details): Non-standard MSVC specific
 </li>
-

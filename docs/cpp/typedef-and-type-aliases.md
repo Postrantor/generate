@@ -2,23 +2,18 @@
 tip: translate by baidu@2023-10-25 08:35:29
 ---
 ---
+
 metaTitle: "C++ | Typedef and type aliases"
 description: "Basic typedef syntax, More complex uses of typedef, Declaring multiple types with typedef, Alias declaration with using"
----
+--------------------------------------------------------------------------------------------------------------------------------------
 
 # Typedef and type aliases
 
+The `typedef` and (since C++11) `using` [keywords](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords) can be used to give a new name to an existing type.
 
-
-The `typedef` and (since C++11) `using` [keywords](http://stackoverflow.com/documentation/c%2b%2b/4891/keywords) can be used to give a new name to an existing type.
-
-> “typedef”和（自C++11以来）“using”[keywords](http://stackoverflow.com/documentation/c%2b%2b/4891/keywords)可以用于为现有类型赋予新名称。
-
-
+> “typedef”和（自 C++11 以来）“using”[keywords](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords) 可以用于为现有类型赋予新名称。
 
 ## Basic typedef syntax
-
-
 
 A `typedef` declaration has the same syntax as a variable or function declaration, but it contains the word `typedef`. The presence of `typedef` causes the declaration to declare a type instead of a variable or function.
 
@@ -32,7 +27,6 @@ int A[100];         // A has type "array of 100 ints"
 typedef int A[100]; // A is an alias for the type "array of 100 ints"
 
 ```
-
 
 Once a type alias has been defined, it can be used interchangeably with the original name of the type.
 
@@ -59,11 +53,7 @@ I S::f(I x) { return x; }
 
 ```
 
-
-
 ## More complex uses of typedef
-
-
 
 The rule that `typedef` declarations have the same syntax as ordinary variable and function declarations can be used to read and write more complex declarations.
 
@@ -74,7 +64,6 @@ void (*f)(int);         // f has type "pointer to function of int returning void
 typedef void (*f)(int); // f is an alias for "pointer to function of int returning void"
 
 ```
-
 
 This is especially useful for constructs with confusing syntax, such as pointers to non-static members.
 
@@ -87,7 +76,6 @@ typedef void (Foo::*pmf)(int); // pmf is an alias for "pointer to member functio
                                // taking int and returning void"
 
 ```
-
 
 It is hard to remember the syntax of the following function declarations, even for experienced programmers:
 
@@ -110,11 +98,7 @@ ra g();                        // g returns reference to array of 100 ints
 
 ```
 
-
-
 ## Declaring multiple types with typedef
-
-
 
 The `typedef` keyword is a specifier, so it applies separately to each declarator. Therefore, each name declared refers to the type that that name would have in the absence of `typedef`.
 
@@ -126,11 +110,7 @@ typedef int *x, (*p)(); // x is an alias for int*, while p is an alias for int(*
 
 ```
 
-
-
 ## Alias declaration with "using"
-
-
 
 The syntax of `using` is very simple: the name to be defined goes on the left hand side, and the definition goes on the right hand side. No need to scan to see where the name is.
 
@@ -144,25 +124,19 @@ using MP = void (Foo::*)(int);  // pointer to member function of Foo of int retu
 
 ```
 
-
 Creating a type alias with `using` has exactly the same effect as creating a type alias with `typedef`. It is simply an alternative syntax for accomplishing the same thing.
 
 > 使用“using”创建类型别名与使用“typedef”创建类型化名的效果完全相同。它只是完成相同任务的一种替代语法。
 
+Unlike `typedef`, `using` can be templated. A "template typedef" created with `using` is called an [alias template](http://stackoverflow.com/documentation/c%2B%2B/460/templates/10144/alias-template).
 
-Unlike `typedef`, `using` can be templated. A "template typedef" created with `using` is called an [alias template](http://stackoverflow.com/documentation/c%2b%2b/460/templates/10144/alias-template).
-
-> 与“typedef”不同，“using”可以是模板化的。使用“using”创建的“template typedef”称为[别名模板](http://stackoverflow.com/documentation/c%2b%2b/460/templates/10144/alias-模板）。
-
-
+> 与“typedef”不同，“using”可以是模板化的。使用“using”创建的“template typedef”称为[别名模板]([http://stackoverflow.com/documentation/c%2b%2b/460/templates/10144/alias](http://stackoverflow.com/documentation/c%2B%2B/460/templates/10144/alias)-模板）。
 
 #### Syntax
 
-
 - typedef **type-specifier-seq** **init-declarator-list**;
-
 - **attribute-specifier-seq** typedef **decl-specifier-seq** **init-declarator-list**; // since C++11
 
-> -**属性说明符seq**typedef**decl说明符seq***init声明符列表**；//自C++11
-- using **identifier** **attribute-specifier-seq**(**opt**) = **type-id**; // since C++11
+> -**属性说明符 seq**typedef**decl 说明符 seq***init 声明符列表**；//自 C++11
 
+- using **identifier** **attribute-specifier-seq**(**opt**) = **type-id**; // since C++11

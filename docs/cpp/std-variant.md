@@ -2,16 +2,14 @@
 tip: translate by baidu@2023-10-25 08:33:08
 ---
 ---
+
 metaTitle: "C++ | std::variant"
 description: "Create pseudo-method pointers, Basic std::variant use, Constructing a `std::variant`"
----
+-------------------------------------------------------------------------------------
 
 # std::variant
 
-
-
 ## Create pseudo-method pointers
-
 
 This is an advanced example.
 
@@ -43,7 +41,6 @@ struct pseudo_method {
 };
 
 ```
-
 
 this creates a type that overloads `operator->*` with a `Variant` on the left hand side.
 
@@ -84,7 +81,6 @@ std::variant<A,B> var = A{};
 
 ```
 
-
 and it will dispatch the call directly to `A::print(std::cout)` for us.  If we instead initialized the `var` with `B{}`, it would dispatch to `B::print(std::cout)`.
 
 > 并且它将为我们直接将调用分派到“A:：print（std:：cout）”。如果我们用“B｛｝”初始化“var”，它将分派到“B:：print（std：：cout”）”。
@@ -106,21 +102,15 @@ std::variant<A,B,C> var = A{};
 
 will fail to compile, because there is no `C.print(std::cout)` method.
 
-
-Extending the above would permit free function `print`s to be detected and used, possibly with use of `if constexpr` within the `print` pseudo-method.
+Extending the above would permit free function `print` s to be detected and used, possibly with use of `if constexpr` within the `print` pseudo-method.
 
 > 扩展以上内容将允许检测和使用自由函数“print”，可能在“print”伪方法中使用“if constexpr”。
-
 
 [live example](http://coliru.stacked-crooked.com/a/57f29d8406ad7b51) currently using `boost::variant` in place of `std::variant`.
 
 > [实例](http://coliru.stacked-crooked.com/a/57f29d8406ad7b51)当前使用“boost:：variant”代替“std:：variation”。
 
-
-
 ## Basic std::variant use
-
-
 
 This creates a variant (a tagged union) that can store either an `int` or a `string`.
 
@@ -166,20 +156,15 @@ auto* str  = std::get_if<std::string>(&var);
 
 returns `nullptr` if you guess wrong.
 
-
 Variants guarantee no dynamic memory allocation (other than which is allocated by their contained types).  Only one of the types in a variant is stored there, and in rare cases (involving exceptions while assigning and no safe way to back out) the variant can become empty.
 
 > 变体保证没有动态内存分配（除了由其包含的类型分配）。变体中只有一个类型存储在那里，在极少数情况下（涉及分配时的异常，并且没有安全的退出方式），变体可能会变空。
 
-
-Variants let you store multiple value types in one variable safely and efficiently.  They are basically smart, type-safe `union`s.
+Variants let you store multiple value types in one variable safely and efficiently.  They are basically smart, type-safe `union` s.
 
 > 变量使您能够安全有效地将多个值类型存储在一个变量中。他们基本上是聪明的，类型安全的“联合”。
 
-
-
 ## Constructing a `std::variant`
-
 
 This does not cover allocators.
 
@@ -200,28 +185,20 @@ std::variant<A,D> var_ad2( std::in_place_index<1>, {1,3,3,4} ); // contains D{1,
 
 ```
 
-
-
 #### Remarks
-
-
 
 Variant is a replacement for raw `union` use.  It is type-safe and knows what type it is, and it carefully constructs and destroys the objects within it when it should.
 
 > 变体是原始“联合”使用的替代品。它是类型安全的，知道它是什么类型，并且在应该的时候小心地构造和销毁其中的对象。
 
-
 It is almost never empty: only in corner cases where replacing its content throws and it cannot back out safely does it end up being in an empty state.
 
 > 它几乎从来都不是空的：只有在替换内容抛出并且无法安全退出的情况下，它才会最终处于空状态。
-
 
 It behaves somewhat like a `std::tuple`, and somewhat like an `std::optional`.
 
 > 它的行为有点像“std:：tuple”，也有点像一个“std：：optional”。
 
-
 Using `std::get` and `std::get_if` is usually a bad idea.  The right answer is usually `std::visit`, which lets you deal with every possibility right there.  `if constexpr` can be used within the `visit` if you need to branch your behavior, rather than doing a sequence of runtime checks that duplicate what `visit` will do more efficiently.
 
-> 使用“std:：get”和“std::：get_if”通常是个坏主意。正确的答案通常是“std:：visit”，它可以让你处理所有的可能性`如果您需要对行为进行分支，则可以在“visit”中使用if constexpr，而不是执行一系列重复“viste”将更有效地执行的运行时检查。
-
+> 使用“std:：get”和“std::：get_if”通常是个坏主意。正确的答案通常是“std:：visit”，它可以让你处理所有的可能性 ` 如果您需要对行为进行分支，则可以在“visit”中使用 if constexpr，而不是执行一系列重复“viste”将更有效地执行的运行时检查。

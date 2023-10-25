@@ -2,16 +2,14 @@
 tip: translate by baidu@2023-10-25 08:32:09
 ---
 ---
+
 metaTitle: "C++ | std::function: To wrap any element that is callable"
 description: "Simple usage, std::function used with std::bind, std::function with lambda and std::bind, `function` overhead, Binding std::function to a different callable types, Storing function arguments in std::tuple"
----
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # std::function: To wrap any element that is callable
 
-
-
 ## Simple usage
-
 
 ```cpp
 #include <iostream>
@@ -29,16 +27,12 @@ int main(int argc, char *argv[])
 
 ```
 
-
-
 ## std::function used with std::bind
-
-
 
 Think about a situation where we need to callback a function with arguments.
 
 > 想想这样一种情况，我们需要用参数回调函数。
-`std::function` used with `std::bind` gives a very powerful design construct as shown below.
+> `std::function` used with `std::bind` gives a very powerful design construct as shown below.
 
 ```cpp
 class A
@@ -84,10 +78,7 @@ int main(int argc, char *argv[])
 
 ```
 
-
-
 ## std::function with lambda and std::bind
-
 
 ```cpp
 #include <iostream>
@@ -138,17 +129,13 @@ int main()
 
 ```
 
-
-
 ## `function` overhead
-
 
 `std::function` can cause significant overhead. Because `std::function` has [value semantics][1], it must copy or move the given callable into itself. But since it can take callables of an arbitrary type, it will frequently have to allocate memory dynamically to do this.
 
-
 Some `function` implementations have so-called "small object optimization", where small types (like function pointers, member pointers, or functors with very little state) will be stored directly in the `function` object. But even this only works if the type is `noexcept` move constructible. Furthermore, the C++ standard does not require that all implementations provide one.
 
-> 一些“函数”实现具有所谓的“小对象优化”，其中小类型（如函数指针、成员指针或状态很少的函数）将直接存储在“函数”对象中。但即使这样，也只有当类型是“noexcept”移动可构造时才有效。此外，C++标准并不要求所有实现都提供一个。
+> 一些“函数”实现具有所谓的“小对象优化”，其中小类型（如函数指针、成员指针或状态很少的函数）将直接存储在“函数”对象中。但即使这样，也只有当类型是“noexcept”移动可构造时才有效。此外，C++ 标准并不要求所有实现都提供一个。
 
 Consider the following:
 
@@ -166,37 +153,29 @@ void SortMyContainer(MyContainer &C, const MyPredicate &pred)
 
 ```
 
-
 A template parameter would be the preferred solution for `SortMyContainer`, but let us assume that this is not possible or desirable for whatever reason. `SortMyContainer` does not need to store `pred` beyond its own call. And yet, `pred` may well allocate memory if the functor given to it is of some non-trivial size.
 
-> 模板参数将是“SortMyContainer”的首选解决方案，但让我们假设，无论出于何种原因，这都是不可能或不可取的`SortMyContainer`不需要将`pred`存储在它自己的调用之外。然而，如果给“pred”的函子是一些非平凡的大小，那么它很可能会分配内存。
+> 模板参数将是“SortMyContainer”的首选解决方案，但让我们假设，无论出于何种原因，这都是不可能或不可取的 `SortMyContainer` 不需要将 `pred` 存储在它自己的调用之外。然而，如果给“pred”的函子是一些非平凡的大小，那么它很可能会分配内存。
 
 `function` allocates memory because it needs something to copy/move into; `function` takes ownership of the callable it is given. But `SortMyContainer` does not need to **own** the callable; it's just referencing it. So using `function` here is overkill; it may be efficient, but it may not.
-
 
 There is no standard library function type that merely references a callable. So an alternate solution will have to be found, or you can choose to live with the overhead.
 
 > 没有标准的库函数类型只引用可调用函数。因此，必须找到另一种解决方案，或者你可以选择承受开销。
 
-
 Also, `function` has no effective means to control where the memory allocations for the object come from. Yes, it has constructors that take an `allocator`, but [many implementations do not implement them correctly... or even **at all**][2].
 
 > 此外，“函数”没有有效的手段来控制对象的内存分配来自哪里。是的，它有采用“分配器”的构造函数，但[许多实现没有正确地实现它们……甚至根本没有实现**][2]。
-
 
 The `function` constructors that take an `allocator` no longer are part of the type. Therefore, there is no way to manage the allocation.
 
 > 采用“分配器”的“函数”构造函数不再是该类型的一部分。因此，没有办法管理分配。
 
-
 Calling a `function` is also slower than calling the contents directly. Since any `function` instance could hold any callable, the call through a `function` must be indirect. The overhead of calling `function` is on the order of a virtual function call.
 
 > 调用“函数”也比直接调用内容慢。由于任何“函数”实例都可以容纳任何可调用的，因此通过“函数”的调用必须是间接的。调用“function”的开销是按照虚拟函数调用的顺序进行的。
 
-
-
 ## Binding std::function to a different callable types
-
 
 ```cpp
 /*
@@ -333,20 +312,15 @@ lambda  called with arguments: 1, 2, 3 result is : 6
 
 ```
 
-
-
 ## Storing function arguments in std::tuple
-
-
 
 Some programs need so store arguments for future calling of some function.
 
-> 有些程序需要so存储参数，以便将来调用某个函数。
-
+> 有些程序需要 so 存储参数，以便将来调用某个函数。
 
 This example shows how to call any function with arguments stored in std::tuple
 
-> 此示例显示如何调用任何参数存储在std:：tuple中的函数
+> 此示例显示如何调用任何参数存储在 std:：tuple 中的函数
 
 ```cpp
 #include <iostream>
@@ -404,4 +378,3 @@ Output:
 foo_fn called. x = 1 y = 5 z = 10 res=16
 
 ```
-

@@ -3,20 +3,19 @@ tip: translate by baidu@2023-10-25 08:16:30
 metaTitle: "C++ | Alignment"
 description: "Controlling alignment, Querying the alignment of a type"
 ---
-
 # Alignment
 
 All types in C++ have an alignment. This is a restriction on the memory address that objects of that type can be created within. A memory address is valid for an object's creation if dividing that address by the object's alignment is a whole number.
 
-> C++中的所有类型都有对齐方式。这是对可以在其中创建该类型对象的内存地址的限制。如果内存地址除以对象的对齐方式是一个整数，则该地址对对象的创建有效。
+> C++ 中的所有类型都有对齐方式。这是对可以在其中创建该类型对象的内存地址的限制。如果内存地址除以对象的对齐方式是一个整数，则该地址对对象的创建有效。
 
 Type alignments are always a power of two (including 1).
 
 ## Controlling alignment
 
-The `alignas` [keyword](http://stackoverflow.com/documentation/c%2b%2b/4891/keywords) can be used to force a variable, class data member, declaration or definition of a class, or declaration or definition of an enum, to have a particular alignment, if supported. It comes in two forms:
+The `alignas` [keyword](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords) can be used to force a variable, class data member, declaration or definition of a class, or declaration or definition of an enum, to have a particular alignment, if supported. It comes in two forms:
 
-> `alignas`[关键字](http://stackoverflow.com/documentation/c%2b%2b/4891/keywords)可以用于强制变量、类数据成员、类的声明或定义，或枚举的声明或限定具有特定的对齐方式（如果支持的话）。它有两种形式：
+> `alignas` [关键字](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords)可以用于强制变量、类数据成员、类的声明或定义，或枚举的声明或限定具有特定的对齐方式（如果支持的话）。它有两种形式：
 
 - `alignas(x)`, where `x` is a constant expression, gives the entity the alignment `x`, if supported.
 
@@ -56,9 +55,9 @@ C++17 features direct support in `operator new` for allocating memory for over-a
 
 ## Querying the alignment of a type
 
-The alignment requirement of a type can be queried using the `alignof` [keyword](http://stackoverflow.com/documentation/c%2b%2b/4891/keywords) as a unary operator. The result is a constant expression of type `std::size_t`, **i.e.,** it can be evaluated at compile time.
+The alignment requirement of a type can be queried using the `alignof` [keyword](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords) as a unary operator. The result is a constant expression of type `std::size_t`, **i.e.,** it can be evaluated at compile time.
 
-> 可以使用`alignof`[关键字]查询类型的对齐要求(http://stackoverflow.com/documentation/c%2b%2b/4891/keywords)作为一元运算符。结果是一个类型为“std:：size_t”的常量表达式，**即**可以在编译时对其求值。
+> 可以使用 `alignof`[关键字]查询类型的对齐要求([http://stackoverflow.com/documentation/c%2b%2b/4891/keywords](http://stackoverflow.com/documentation/c%2B%2B/4891/keywords))作为一元运算符。结果是一个类型为“std:：size_t”的常量表达式，**即**可以在编译时对其求值。
 
 ```cpp
 #include <iostream>

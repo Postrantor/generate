@@ -2,13 +2,12 @@
 tip: translate by baidu@2023-10-25 08:33:51
 ---
 ---
+
 metaTitle: "C++ | Stream manipulators"
 description: "Stream manipulators, Output stream manipulators, Input stream manipulators"
----
+-----------------------------------------------------------------------------------------
 
 # Stream manipulators
-
-
 
 Manipulators are special helper functions that help controlling input and output streams using `operator >>` or `operator <<`.
 
@@ -16,11 +15,7 @@ Manipulators are special helper functions that help controlling input and output
 
 They all can be included by `#include <iomanip>`.
 
-
-
 ## Stream manipulators
-
-
 
 [`std::boolalpha`](http://en.cppreference.com/w/cpp/io/manip/booalpha) and [`std::noboolalpha`](http://en.cppreference.com/w/cpp/io/manip/booalpha) - switch between textual and numeric representation of booleans.
 
@@ -42,11 +37,9 @@ std::cout << "Value \"" << std::boolalpha << boolValue
 
 ```
 
-
 [`std::showbase`](http://en.cppreference.com/w/cpp/io/manip/showbase) and [`std::noshowbase`](http://en.cppreference.com/w/cpp/io/manip/showbase) - control whether prefix indicating numeric base is used.
 
 > [`std:：showbase`](http://en.cppreference.com/w/cpp/io/manip/showbase)和[`std:：noshowbase`](http://en.cppreference.com/w/cpp/io/manip/showbase)-控制是否使用指示数字基数的前缀。
-
 
 [`std::dec`](http://en.cppreference.com/w/cpp/io/manip/hex) (decimal), [`std::hex`](http://en.cppreference.com/w/cpp/io/manip/hex) (hexadecimal) and [`std::oct`](http://en.cppreference.com/w/cpp/io/manip/hex) (octal) - are used for changing base for integers.
 
@@ -67,17 +60,14 @@ std::cout << std::dec << 10;
 
 ```
 
-
 Default values are [`std::ios_base::noshowbase`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags) and [`std::ios_base::dec`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags).
 
 > 默认值为[`std:：ios_base:：noshowbase`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)和[`std:：ios_base:：dec`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)。
-<br>
+> <br>
 
+If you want to see more about `std::istringstream` check out the [[sstream](http://en.cppreference.com/w/cpp/header/sstream)](%5Bsstream%5D(http://en.cppreference.com/w/cpp/header/sstream)) header.
 
-If you want to see more about `std::istringstream` check out the <[sstream](http://en.cppreference.com/w/cpp/header/sstream)> header.
-
-> 如果您想了解更多关于“std:：istringstream”的信息，请查看<[stream](http://en.cppreference.com/w/cpp/header/sstream)>收割台。
-
+> 如果您想了解更多关于“std:：istringstream”的信息，请查看[[stream](http://en.cppreference.com/w/cpp/header/sstream)](%5Bstream%5D(http://en.cppreference.com/w/cpp/header/sstream))收割台。
 
 [`std::uppercase`](http://en.cppreference.com/w/cpp/io/manip/uppercase) and [`std::nouppercase`](http://en.cppreference.com/w/cpp/io/manip/uppercase) - control whether uppercase characters are used in floating-point and hexadecimal integer output. Have no effect on input streams.
 
@@ -95,11 +85,9 @@ std::cout << std::hex << std::showbase
 
 Default is `std::nouppercase`.
 
-
 [`std::setw(n)`](http://en.cppreference.com/w/cpp/io/manip/setw) - changes the width of the next input/output field to exactly `n`.
 
 > [`std:：setw（n）`](http://en.cppreference.com/w/cpp/io/manip/setw)-将下一个输入/输出字段的宽度更改为“n”。
-
 
 The width property `n` is resetting to `0` when some functions are called (full list is [here](http://en.cppreference.com/w/cpp/io/manip/setw)).
 
@@ -127,10 +115,9 @@ std::cout << "Input from \"Hello, world!\" with setw(6) gave \"" << arr << "\"\n
 
 Default is `std::setw(0)`.
 
-
 [`std::left`](http://en.cppreference.com/w/cpp/io/manip/left), [`std::right`](http://en.cppreference.com/w/cpp/io/manip/left) and [`std::internal`](http://en.cppreference.com/w/cpp/io/manip/left) - modify the default position of the fill characters by setting [`std::ios_base::adjustfield`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags) to [`std::ios_base::left`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags), [`std::ios_base::right`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags) and [`std::ios_base::internal`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags) correspondingly. `std::left` and `std::right` apply to any output, `std::internal` - for integer, floating-point and monetary output. Have no effect on input streams.
 
-> [`std:：left `](http://en.cppreference.com/w/cpp/io/manip/left)，[`std:：right `](http://en.cppreference.com/w/cpp/io/manip/left)和[`std:：internal`](http://en.cppreference.com/w/cpp/io/manip/left)-通过设置[`std:：ios_base:：adjustfield`]修改填充字符的默认位置(http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)到[`std:：ios_base:：left `](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)，[`std:：ios_base:：right `](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)和[`std:：ios_base:：internal`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)相应地`std:：left和std:：right适用于任何输出，std:：internal适用于整数、浮点和货币输出。对输入流没有影响。
+> [`std:：left `](http://en.cppreference.com/w/cpp/io/manip/left)，[`std:：right `](http://en.cppreference.com/w/cpp/io/manip/left)和[`std:：internal`](http://en.cppreference.com/w/cpp/io/manip/left)-通过设置[`std:：ios_base:：adjustfield`]修改填充字符的默认位置([http://en.cppreference.com/w/cpp/io/ios_base/fmtflags](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags))到[`std:：ios_base:：left `](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)，[`std:：ios_base:：right `](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)和[`std:：ios_base:：internal`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)相应地 `std:：left 和 std:：right 适用于任何输出，std:：internal 适用于整数、浮点和货币输出。对输入流没有影响。
 
 ```cpp
 #include <locale>
@@ -184,7 +171,6 @@ std::cout << std::right << std::showbase << std::setfill('*')
 
 Default is `std::left`.
 
-
 [`std::fixed`](http://en.cppreference.com/w/cpp/io/manip/fixed), [`std::scientific`](http://en.cppreference.com/w/cpp/io/manip/fixed), [`std::hexfloat`](http://en.cppreference.com/w/cpp/io/manip/fixed) [C++11] and [`std::defaultfloat`](http://en.cppreference.com/w/cpp/io/manip/fixed) [C++11] - change formatting for floating-point input/output.
 
 > [`std:：fixed`](http://en.cppreference.com/w/cpp/io/manip/fixed)，[`std:：scientific `](http://en.cppreference.com/w/cpp/io/manip/fixed)，[`std:：hexfoat`](http://en.cppreference.com/w/cpp/io/manip/fixed)[C++11]和[`std:：defaultfloat`](http://en.cppreference.com/w/cpp/io/manip/fixed)[C++11]-更改浮点输入/输出的格式。
@@ -235,7 +221,6 @@ std::cout << "Parsing 0x1P-1022 as hex gives " << f << '\n';
 
 ```
 
-
 [`std::showpoint`](http://en.cppreference.com/w/cpp/io/manip/showpoint) and [`std::noshowpoint`](http://en.cppreference.com/w/cpp/io/manip/showpoint) - control whether decimal point is always included in floating-point representation. Have no effect on input streams.
 
 > [`std:：showpoint`](http://en.cppreference.com/w/cpp/io/manip/showpoint)和[`std:：noshowpoint`](http://en.cppreference.com/w/cpp/io/manip/showpoint)—控制浮点表示中是否始终包含小数点。对输入流没有影响。
@@ -249,7 +234,6 @@ std::cout << "7.0 with showpoint: " << std::showpoint << 7.0 << '\n'
 ```
 
 Default is `std::showpoint`.
-
 
 [`std::showpos`](http://en.cppreference.com/w/cpp/io/manip/showpos) and [`std::noshowpos`](http://en.cppreference.com/w/cpp/io/manip/showpos) - control displaying of the `+` sign in **non-negative** output. Have no effect on input streams.
 
@@ -267,28 +251,23 @@ std::cout << "With showpos: " << std::showpos
 
 Default if `std::noshowpos`.
 
-
 [`std::unitbuf`](http://en.cppreference.com/w/cpp/io/manip/unitbuf), [`std::nounitbuf`](http://en.cppreference.com/w/cpp/io/manip/unitbuf) - control flushing output stream after every operation. Have no effect on input stream. `std::unitbuf` causes flushing.
 
-> [`std:：unitbuf`](http://en.cppreference.com/w/cpp/io/manip/unitbuf)，[`std:：nounitbuf`](http://en.cppreference.com/w/cpp/io/manip/unitbuf)-每次操作后控制冲洗输出流。对输入流没有影响`std:：unitbuf`导致冲洗。
-
+> [`std:：unitbuf`](http://en.cppreference.com/w/cpp/io/manip/unitbuf)，[`std:：nounitbuf`](http://en.cppreference.com/w/cpp/io/manip/unitbuf)-每次操作后控制冲洗输出流。对输入流没有影响 `std:：unitbuf` 导致冲洗。
 
 [`std::setbase(base)`](http://en.cppreference.com/w/cpp/io/manip/setbase) - sets the numeric base of the stream.
 
 > [`std:：setbase（base）`](http://en.cppreference.com/w/cpp/io/manip/setbase)—设置流的数字基数。
-<br><br>
-`std::setbase(8)` equals to setting `std::ios_base::basefield` to `std::ios_base::oct`,<br> `std::setbase(16)` - to `std::ios_base::hex`,<br> `std::setbase(10)` - to `std::ios_base::dec`.
-
+> <br><br>
+> `std::setbase(8)` equals to setting `std::ios_base::basefield` to `std::ios_base::oct`,<br> `std::setbase(16)` - to `std::ios_base::hex`,<br> `std::setbase(10)` - to `std::ios_base::dec`.
 
 If `base` is other then `8`, `10` or `16` then `std::ios_base::basefield` is setting to `std::ios_base::fmtflags(0)`. It means decimal output and prefix-dependent input.
 
 > 如果“base”不是“8”、“10”或“16”，则“std:：ios_base:：basefield”设置为“std::：ios_base:：fmtflags（0）”。它意味着十进制输出和前缀相关输入。
 
-
 As default `std::ios_base::basefield` is `std::ios_base::dec` then by default `std::setbase(10)`.
 
 > 默认情况下，“std:：ios_base:：basefield”为“std：：ios_base：：dec”，然后默认情况下为“std:”setbase（10）。
-
 
 [`std::setprecision(n)`](http://en.cppreference.com/w/cpp/io/manip/setprecision) - changes floating-point precision.
 
@@ -328,7 +307,6 @@ std::cout << '\n'
 
 Default is `std::setprecision(6)`.
 
-
 [`std::setiosflags(mask)`](http://en.cppreference.com/w/cpp/io/manip/setiosflags) and [`std::resetiosflags(mask)`](http://en.cppreference.com/w/cpp/io/manip/resetiosflags) - set and clear flags specified in `mask` of `std::ios_base::fmtflags` type.
 
 > [`std:：setiosflags（掩码）`](http://en.cppreference.com/w/cpp/io/manip/setiosflags)和[`std:：resetiosflags（mask）`](http://en.cppreference.com/w/cpp/io/manip/resetiosflags)-设置并清除“std:：ios_base:：fmtflags”类型的“mask”中指定的标志。
@@ -359,7 +337,6 @@ std::cout << std::setiosflags(std::ios_base::hex |
 
 ```
 
-
 [`std::skipws`](http://en.cppreference.com/w/cpp/io/manip/skipws) and [`std::noskipws`](http://en.cppreference.com/w/cpp/io/manip/skipws) - control skipping of leading whitespace by the formatted input functions. Have no effect on output streams.
 
 > [`std:：skipws`](http://en.cppreference.com/w/cpp/io/manip/skipws)和[`std:：noskipws`](http://en.cppreference.com/w/cpp/io/manip/skipws)-控制格式化的输入函数跳过前导空格。对输出流没有影响。
@@ -379,18 +356,16 @@ std::cout << "noskipws behavior:  c1 = " << c1 << "  c2 = " << c2 << "  c3 = " <
 
 ```
 
-
 Default is [`std::ios_base::skipws`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags).
 
 > 默认值为[`std:：ios_base:：skipws`](http://en.cppreference.com/w/cpp/io/ios_base/fmtflags)。
 
-
 [`std::quoted(s[, delim[, escape]])`](http://en.cppreference.com/w/cpp/io/manip/quoted) [C++14] - inserts or extracts quoted strings with embedded spaces.<br><br>
 
 > [`std:：引号（s[，delim[，escape]]）`](http://en.cppreference.com/w/cpp/io/manip/quoted)[C++14]-插入或提取带有嵌入空格的带引号的字符串<br><br>
-`s` - the string to insert or extract.<br>
-`delim` - the character to use as the delimiter, `"` by default.<br>
-`escape` - the character to use as the escape character, `\` by default.
+> `s` - the string to insert or extract.<br>
+> `delim` - the character to use as the delimiter, `"` by default.<br>
+> `escape` - the character to use as the escape character, `\` by default.
 
 ```cpp
 #include <sstream>
@@ -415,16 +390,12 @@ std::cout << "written out [" << out << "]\n";
 
 For more information see the link above.
 
-
-
 ## Output stream manipulators
-
-
 
 [`std::ends`](http://en.cppreference.com/w/cpp/io/manip/ends) - inserts a null character `'\0'` to output stream.
 
 > [`std:：ends`](http://en.cppreference.com/w/cpp/io/manip/ends)-在输出流中插入一个空字符“\0”。
-More formally this manipulator's declaration looks like
+> More formally this manipulator's declaration looks like
 
 ```cpp
 template <class charT, class traits>
@@ -432,11 +403,9 @@ std::basic_ostream<charT, traits>& ends(std::basic_ostream<charT, traits>& os);
 
 ```
 
-
 and this manipulator places character by calling `os.put(charT())` when used in an expression<br>`os << std::ends;`
 
-> 当在表达式<br>`os<std:：ends中使用时，该操纵器通过调用`os.put（charT（））`来放置字符`
-
+> 当在表达式<br>`os<std:：ends中使用时，该操纵器通过调用` os.put（charT（））`来放置字符`
 
 [`std::endl`](http://en.cppreference.com/w/cpp/io/manip/endl) and [`std::flush`](http://en.cppreference.com/w/cpp/io/manip/flush) both flush output stream `out` by calling `out.flush()`. It causes immediately producing output. But `std::endl` inserts end of line `'\n'` symbol before flushing.
 
@@ -449,7 +418,6 @@ std::cout << "First line." << std::endl << "Second line. " << std::flush
 // Second line. Still second line.
 
 ```
-
 
 [`std::setfill(c)`](http://en.cppreference.com/w/cpp/io/manip/setfill) - changes the fill character to `c`. Often used with `std::setw`.
 
@@ -465,10 +433,9 @@ std::cout << "\nDefault fill: " << std::setw(10) << 79 << '\n'
 
 ```
 
-
 [`std::put_money(mon[, intl])`](http://en.cppreference.com/w/cpp/io/manip/put_money) [C++11]. In an expression `out << std::put_money(mon, intl)`, converts the monetary value `mon` (of `long double` or `std::basic_string` type) to its character representation as specified by the [`std::money_put`](http://en.cppreference.com/w/cpp/locale/money_put) facet of the locale currently imbued in `out`. Use international currency strings if `intl` is `true`, use currency symbols otherwise.
 
-> [`std:：put_money（mon[，intl]）`](http://en.cppreference.com/w/cpp/io/manip/put_money)[C++11]。在表达式“out”中，将货币值“mon”（“long double”或“std:：basic_string”类型）转换为[`std:：money_put`]指定的字符表示(http://en.cppreference.com/w/cpp/locale/money_put)该地区的方方面面目前充斥着“out”。如果“intl”为“true”，请使用国际货币字符串，否则请使用货币符号。
+> [`std:：put_money（mon[，intl]）`](http://en.cppreference.com/w/cpp/io/manip/put_money)[C++11]。在表达式“out”中，将货币值“mon”（“long double”或“std:：basic_string”类型）转换为[`std:：money_put`]指定的字符表示([http://en.cppreference.com/w/cpp/locale/money_put](http://en.cppreference.com/w/cpp/locale/money_put))该地区的方方面面目前充斥着“out”。如果“intl”为“true”，请使用国际货币字符串，否则请使用货币符号。
 
 ```cpp
 long double money = 123.45;
@@ -490,7 +457,6 @@ std::cout << "ja_JP: " << std::put_money(money)
 // Output: ja_JP: ￥123 or JPY  123
 
 ```
-
 
 [`std::put_time(tmb, fmt)`](http://en.cppreference.com/w/cpp/io/manip/put_time) [C++11] - formats and outputs a date/time value to `std::tm` according to the specified format `fmt`.<br>
 
@@ -515,11 +481,7 @@ std::cout << "\nru_RU: " << std::put_time(&tm, "%c %Z") << '\n';
 
 For more information see the link above.
 
-
-
 ## Input stream manipulators
-
-
 
 [`std::ws`](http://en.cppreference.com/w/cpp/io/manip/ws) - consumes leading whitespaces in input stream. It different from `std::skipws`.
 
@@ -536,10 +498,9 @@ std::cout << str;
 
 ```
 
-
 [`std::get_money(mon[, intl])`](http://en.cppreference.com/w/cpp/io/manip/get_money) [C++11]. In an expression `in >> std::get_money(mon, intl)` parses the character input as a monetary value, as specified by the [`std::money_get`](http://en.cppreference.com/w/cpp/locale/money_get) facet of the locale currently imbued in `in`, and stores the value in `mon` (of `long double` or `std::basic_string` type). Manipulator expects **required** international currency strings if `intl` is `true`, expects **optional** currency symbols otherwise.
 
-> [`std:：get_money（mon[，intl]）`](http://en.cppreference.com/w/cpp/io/manip/get_money)[C++11]。在表达式`In>>中，std:：get_money（mon，intl）`将字符输入解析为货币值，如[`std:：money_get`]所指定(http://en.cppreference.com/w/cpp/locale/money_get)当前包含在“in”中的区域设置的facet，并将值存储在“mon”（“long double”或“std:：basic_string”类型）中。如果“intl”为“true”，则操纵器需要**个必需的**个国际货币字符串，否则需要**个可选的**个货币符号。
+> [`std:：get_money（mon[，intl]）`](http://en.cppreference.com/w/cpp/io/manip/get_money)[C++11]。在表达式 `In>>中，std:：get_money（mon，intl）` 将字符输入解析为货币值，如[`std:：money_get`]所指定([http://en.cppreference.com/w/cpp/locale/money_get](http://en.cppreference.com/w/cpp/locale/money_get))当前包含在“in”中的区域设置的 facet，并将值存储在“mon”（“long double”或“std:：basic_string”类型）中。如果“intl”为“true”，则操纵器需要**个必需的**个国际货币字符串，否则需要**个可选的**个货币符号。
 
 ```cpp
 #include <sstream>
@@ -561,12 +522,11 @@ if (in) {
 
 ```
 
-
 [`std::get_time(tmb, fmt)`](http://en.cppreference.com/w/cpp/io/manip/get_time) [C++11] - parses a date/time value stored in `tmb` of specified format `fmt`.<br><br>
 
 > [`std:：get_time（tmb，fmt）`](http://en.cppreference.com/w/cpp/io/manip/get_time)[C++11]-解析存储在指定格式“fmt”的“tmb”中的日期/时间值<br><br>
-`tmb` - valid pointer to the `const std::tm*` object where the result will be stored.<br>
-`fmt` - pointer to a null-terminated string `const CharT*` specifying the conversion format.
+> `tmb` - valid pointer to the `const std::tm*` object where the result will be stored.<br>
+> `fmt` - pointer to a null-terminated string `const CharT*` specifying the conversion format.
 
 ```cpp
 #include <sstream>
@@ -591,10 +551,7 @@ else {
 
 For more information see the link above.
 
-
-
 #### Remarks
-
 
 Manipulators can be used in other way. For example:
 <br>
@@ -619,7 +576,6 @@ str.setf(base ==  8 ? std::ios_base::oct :
 
 ```
 
-
 <li>`os.setf(std::ios_base::flag);` equals to `os << std::flag;`<br>
 `is.setf(std::ios_base::flag);` equals to `is >> std::flag;`
 <br><br>
@@ -629,9 +585,9 @@ str.setf(base ==  8 ? std::ios_base::oct :
 (where **##** - is **concatenation operator**)
 <br><br>
 
-for next `flag`s: **`boolalpha`**, **`showbase`**, **`showpoint`**, **`showpos`**, **`skipws`**, **`uppercase`**.</li>
+for next `flag` s: **`boolalpha`**, **`showbase`**, **`showpoint`**, **`showpos`**, **`skipws`**, **`uppercase`**.</li>
 
-> 下一个`flag`s:**`boolalpha`**，**`showbase`**，***`showpoint`**，**`showpos`**，**` skipws`**，**`大写`**</li>
+> 下一个 `flag` s:**`boolalpha`**，**`showbase`**，***`showpoint`**，**`showpos`**，**` skipws`**，**`大写`**</li>
 
 <li>**`std::ios_base::basefield`**.<br>
 For `flag`s: **`dec`**, **`hex`** and **`oct`**:</li>
@@ -653,11 +609,10 @@ For `flag`s: **`left`**, **`right`** and **`internal`**:</li>
 <li>`str.unsetf(std::ios_base::flag, std::ios_base::adjustfield);` equals to `str.setf(std::ios_base::fmtflags(0), std::ios_base::adjustfield);`<br>
 **( 2 )**</li>
 
-
 **( 1 )** If flag of corresponding field previously set have already unset by `unsetf`.<br>
 
 > **（1）**如果先前设置的相应字段的标志已经被“unsetf”取消设置<br>
-**( 2 )** If `flag` is set.
+> **( 2 )** If `flag` is set.
 
 1. **`std::ios_base::floatfield`**.<br>
 
@@ -678,4 +633,3 @@ for `flag`s: **`basefield`**, **`adjustfield`**, **`floatfield`**.</li>
 `is.unsetf(mask)` equals to `is >> resetiosflags(mask);`
 <br><br>
 For almost all `mask` of `std::ios_base::fmtflags` type.</li>
-

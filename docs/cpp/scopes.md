@@ -2,17 +2,14 @@
 tip: translate by baidu@2023-10-25 08:30:55
 ---
 ---
+
 metaTitle: "C++ | Scopes"
 description: "Global variables, Simple block scope"
----
+---------------------------------------------------
 
 # Scopes
 
-
-
 ## Global variables
-
-
 
 To declare a single instance of a variable which is accessible in different source files, it is possible to make it in the global scope with keyword `extern`. This keyword says the compiler that somewhere in the code there is a definition for this variable, so it can be used everywhere and all write/read will be done in one place of memory.
 
@@ -65,11 +62,7 @@ The radius is: 123
 
 ```
 
-
-
 ## Simple block scope
-
-
 
 The scope of a variable in a block `{ ... }`, begins after declaration and ends at the end of the block. If there is nested block, the inner block can hide the scope of a variable which is declared in the outer block.
 
@@ -84,7 +77,6 @@ The scope of a variable in a block `{ ... }`, begins after declaration and ends 
 }   // <- Scope of `x` ends here
 
 ```
-
 
 If a nested block starts within an outer block, a new declared variable with the same name which is before in the outer class, hides the first one.
 
@@ -104,4 +96,3 @@ If a nested block starts within an outer block, a new declared variable with the
 }
 
 ```
-

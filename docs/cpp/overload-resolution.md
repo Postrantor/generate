@@ -2,17 +2,14 @@
 tip: translate by baidu@2023-10-25 08:29:10
 ---
 ---
+
 metaTitle: "C++ | Overload resolution"
 description: "Categorization of argument to parameter cost, Exact match, Name lookup and access checking, Overloading on Forwarding Reference, Arithmetic promotions and conversions, Overloading on constness and volatility, Steps of Overload Resolution, Overloading within a class hierarchy"
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Overload resolution
 
-
-
 ## Categorization of argument to parameter cost
-
-
 
 Overload resolution partitions the cost of passing an argument to a parameter into one of four different categorizes, called "sequences". Each sequence may include zero, one or several conversions
 
@@ -26,7 +23,6 @@ void f(int a); f(42);
 
 ```
 
-
 </li>
 <li>
 User defined conversion sequence
@@ -35,7 +31,6 @@ User defined conversion sequence
 void f(std::string s); f("hello");
 
 ```
-
 
 </li>
 <li>
@@ -46,7 +41,6 @@ void f(...); f(42);
 
 ```
 
-
 </li>
 <li>
 List initialization sequence
@@ -56,24 +50,17 @@ void f(std::vector<int> v); f({1, 2, 3});
 
 ```
 
-
 </li>
-
 
 The general principle is that Standard conversion sequences are the cheapest, followed by user defined conversion sequences, followed by ellipsis conversion sequences.
 
 > 一般原则是标准转换序列最便宜，其次是用户定义的转换序列，然后是省略号转换序列。
 
-
 A special case is the list initialization sequence, which does not constitute a conversion (an initializer list is not an expression with a type). Its cost is determined by defining it to be equivalent to one of the other three conversion sequences, depending on the parameter type and form of initializer list.
 
 > 一种特殊情况是列表初始化序列，它不构成转换（初始化器列表不是具有类型的表达式）。它的代价是通过定义它等价于其他三个转换序列中的一个来确定的，这取决于参数类型和初始值设定项列表的形式。
 
-
-
 ## Exact match
-
-
 
 An overload without conversions needed for parameter types or only conversions needed between types that are still considered exact matches is preferred over an overload that requires other conversions in order to call.
 
@@ -86,10 +73,9 @@ f(42); // calls f(int)
 
 ```
 
-
 When an argument binds to a reference to the same type, the match is considered to not require a conversion even if the reference is more cv-qualified.
 
-> 当一个参数绑定到对同一类型的引用时，即使引用更符合cv，匹配也被认为不需要转换。
+> 当一个参数绑定到对同一类型的引用时，即使引用更符合 cv，匹配也被认为不需要转换。
 
 ```cpp
 void f(int& x);
@@ -103,10 +89,9 @@ g(x); // ambiguous; both overloads give exact match
 
 ```
 
-
 For the purposes of overload resolution, the type "array of `T`" is considered to match exactly with the type "pointer to `T`", and the function type `T` is considered to match exactly with the function pointer type `T*`, even though both require conversions.
 
-> 为了解决过载问题，类型“`T`的数组”被认为与类型“指向`T'的指针”完全匹配，函数类型“T`被认为与函数指针类型“T*'完全匹配，即使两者都需要转换。
+> 为了解决过载问题，类型“`T` 的数组”被认为与类型“指向 `T'的指针”完全匹配，函数类型“T` 被认为与函数指针类型“T*'完全匹配，即使两者都需要转换。
 
 ```cpp
 void f(int* p);
@@ -121,11 +106,7 @@ g(a); // ambiguous; both overloads give exact match
 
 ```
 
-
-
 ## Name lookup and access checking
-
-
 
 Overload resolution occurs **after** name lookup. This means that a better-matching function will not be selected by overload resolution if it loses name lookup:
 
@@ -141,7 +122,6 @@ struct S {
 
 ```
 
-
 Overload resolution occurs **before** access checking. An inaccessible function might be selected by overload resolution if it is a better match than an accessible function.
 
 > 过载解决发生在**访问检查之前**。如果不可访问函数比可访问函数更匹配，则可以通过重载解析选择不可访问的函数。
@@ -156,7 +136,6 @@ class C {
 C::f(42); // Error! Calls private C::f(int) even though public C::f(double) is viable.
 
 ```
-
 
 Similarly, overload resolution happens without checking whether the resulting call is well-formed with regards to `explicit`:
 
@@ -174,11 +153,7 @@ foo({4}); // X(int) is better much, but expression is
 
 ```
 
-
-
 ## Overloading on Forwarding Reference
-
-
 
 You must be very careful when providing a forwarding reference overload as it may match too well:
 
@@ -194,7 +169,6 @@ struct A {
 };
 
 ```
-
 
 The intent here was that `A` is copyable, and that we have this other constructor that might initialize some other member. However:
 
@@ -214,15 +188,13 @@ A(A& );       // #3, with T = A&
 
 ```
 
-
 Both are Exact Matches, but `#3` takes a reference to a less **cv**-qualified object than `#2` does, so it has the better standard conversion sequence and is the best viable function.
 
-> 两者都是精确匹配，但“#3”引用了一个比“#2”更少的**cv***限定对象，因此它具有更好的标准转换序列，是最好的可行函数。
-
+> 两者都是精确匹配，但“#3”引用了一个比“#2”更少的 **cv***限定对象，因此它具有更好的标准转换序列，是最好的可行函数。
 
 The solution here is to always constrain these constructors (e.g. using SFINAE):
 
-> 这里的解决方案是始终约束这些构造函数（例如，使用SFINAE）：
+> 这里的解决方案是始终约束这些构造函数（例如，使用 SFINAE）：
 
 ```cpp
 template <class T,
@@ -232,16 +204,11 @@ A(T&& );
 
 ```
 
-
 The type trait here is to exclude any `A` or class publicly and unambiguously derived from `A` from consideration, which would make this constructor ill-formed in the example described earlier (and hence removed from the overload set). As a result, the copy constructor is invoked - which is what we wanted.
 
 > 这里的类型特征是排除任何公开且明确地从“A”派生的“A”或类，这将使该构造函数在前面描述的示例中格式不正确（因此从重载集中删除）。结果，复制构造函数被调用了——这正是我们想要的。
 
-
-
 ## Arithmetic promotions and conversions
-
-
 
 Converting an integer type to the corresponding promoted type is better than converting it to some other integer type.
 
@@ -257,7 +224,6 @@ f(s); // calls f(short); exact match is better than promotion to int
 
 ```
 
-
 Promoting a `float` to `double` is better than converting it to some other floating point type.
 
 > 将“float”提升为“double”比将其转换为其他浮点类型要好。
@@ -268,7 +234,6 @@ void f(long double x);
 f(3.14f); // calls f(double); promotion to double is better than conversion to long double
 
 ```
-
 
 Arithmetic conversions other than promotions are neither better nor worse than each other.
 
@@ -286,7 +251,6 @@ g(3.14); // ambiguous
 
 ```
 
-
 Therefore, in order to ensure that there will be no ambiguity when calling a function `f` with either integral or floating-point arguments of any standard type, a total of eight overloads are needed, so that for each possible argument type, either an overload matches exactly or the unique overload with the promoted argument type will be selected.
 
 > 因此，为了确保在使用任何标准类型的整数或浮点参数调用函数“f”时不会出现歧义，总共需要八个重载，以便对于每个可能的参数类型，要么选择一个完全匹配的重载，要么选择具有提升参数类型的唯一重载。
@@ -303,11 +267,7 @@ void f(long double x);
 
 ```
 
-
-
 ## Overloading on constness and volatility
-
-
 
 Passing a pointer argument to a `T*` parameter, if possible, is better than passing it to a `const T*` parameter.
 
@@ -329,7 +289,6 @@ f(&d); // f(const Derived*) is better than f(Base*) though;
 
 ```
 
-
 Likewise, passing an argument to a `T&` parameter, if possible, is better than passing it to a `const T&` parameter, even if both have exact match rank.
 
 > 同样，如果可能的话，将一个参数传递给“T&”参数比将其传递给“const T&”参数要好，即使两者的秩都完全匹配。
@@ -344,10 +303,9 @@ f(y); // only f(const int&) is viable
 
 ```
 
-
 This rule applies to const-qualified member functions as well, where it is important for allowing mutable access to non-const objects and immutable access to const objects.
 
-> 此规则也适用于const限定的成员函数，在这些函数中，允许对非const对象进行可变访问和对const对象的不可变访问非常重要。
+> 此规则也适用于 const 限定的成员函数，在这些函数中，允许对非 const 对象进行可变访问和对 const 对象的不可变访问非常重要。
 
 ```cpp
 class IntVector {
@@ -367,7 +325,6 @@ const int* data2 = v2.data(); // only Vector::data() const is viable;
                               // data2 can't be used to modify the vector's data
 
 ```
-
 
 In the same way, a volatile overload will be less preferred than a non-volatile overload.
 
@@ -390,10 +347,7 @@ static_cast<volatile AtomicInt&>(a1).load(); // force volatile semantics for a1
 
 ```
 
-
-
 ## Steps of Overload Resolution
-
 
 The steps of overload resolution are:
 
@@ -402,6 +356,7 @@ The steps of overload resolution are:
 Find candidate functions via name lookup. Unqualified calls will perform both regular unqualified lookup as well as argument-dependent lookup (if applicable).
 
 > 通过名称查找查找候选函数。非限定调用将执行常规非限定查找以及参数相关查找（如果适用）。
+
 </li>
 <li>
 
@@ -422,7 +377,6 @@ f(4); // 1,2 are viable (even though 2 is deleted!)
 
 ```
 
-
 </li>
 <li>
 
@@ -442,11 +396,9 @@ f(4);  // call (1), better conversion sequence
 
 ```
 
-
-
 3.2. In a user-defined conversion, the standard conversion sequence from the return of `F1` to the destination type is a better conversion sequence than that of the return type of `F2`, or
 
-> 3.2在用户定义的转换中，从“F1”的返回到目的类型的标准转换序列是比“F2”的返回类型更好的转换序列，或者
+> 3.2 在用户定义的转换中，从“F1”的返回到目的类型的标准转换序列是比“F2”的返回类型更好的转换序列，或者
 
 ```cpp
 struct A 
@@ -459,9 +411,6 @@ int i = a; // a.operator int() is better than a.operator double() and a conversi
 float f = a; // ambiguous
 
 ```
-
-
-
 
 3.3. In a direct reference binding, `F1` has the same kind of reference by `F2` is not, or
 
@@ -479,7 +428,6 @@ X&& rx = a; // calls #2
 
 ```
 
-
 3.4. `F1` is not a function template specialization, but `F2` is, or
 
 ```cpp
@@ -489,8 +437,6 @@ void f(int );                  // #2
 f(42); // calls #2, the non-template
 
 ```
-
-
 
 3.5. `F1` and `F2` are both function template specializations, but `F1` is more specialized than `F2`.
 
@@ -505,9 +451,7 @@ f(p); // calls #2, more specialized
 
 ```
 
-
 </li>
-
 
 The ordering here is significant. The better conversion sequence check happens before the template vs non-template check. This leads to a common error with overloading on forwarding reference:
 
@@ -529,7 +473,6 @@ A b(a); // calls #2!
 
 ```
 
-
 If there's no single best viable candidate at the end, the call is ambiguous:
 
 > 如果最后没有一个最可行的候选人，那么这个决定是模棱两可的：
@@ -542,10 +485,7 @@ f(42); // error: ambiguous
 
 ```
 
-
-
 ## Overloading within a class hierarchy
-
 
 The following examples will use this class hierarchy:
 
@@ -555,7 +495,6 @@ struct B : A {};
 struct C : B {};
 
 ```
-
 
 The conversion from derived class type to base class type is preferred to user-defined conversions. This applies when passing by value or by reference, as well as when converting pointer-to-derived to pointer-to-base.
 
@@ -572,7 +511,6 @@ f(b); // calls f(A)
 
 ```
 
-
 A pointer conversion from derived class to base class is also better than conversion to `void*`.
 
 > 从派生类到基类的指针转换也比转换到“void*”要好。
@@ -584,7 +522,6 @@ B b;
 f(&b); // calls f(A*)
 
 ```
-
 
 If there are multiple overloads within the same chain of inheritance, the most derived base class overload is preferred. This is based on a similar principle as virtual dispatch: the "most specialized" implementation is chosen. However, overload resolution always occurs at compile time and will never implicitly down-cast.
 
@@ -601,7 +538,6 @@ f(r); // calls f(const A&); the f(const B&) overload is not viable
 
 ```
 
-
 For pointers to members, which are contravariant with respect to the class, a similar rule applies in the opposite direction: the least derived derived class is preferred.
 
 > 对于指向与类相反的成员的指针，类似的规则适用于相反的方向：首选派生最少的类。
@@ -614,15 +550,11 @@ f(p); // calls f(int B::*)
 
 ```
 
-
-
 #### Remarks
-
 
 Overload resolution happens in several different situations
 
 - Calls to named overloaded functions. The candidates are all the functions found by name lookup.
-
 - Calls to class object. The candidates are usually all the overloaded function call operators of the class.
 
 > -调用类对象。候选者通常是类的所有重载函数调用运算符。
@@ -630,6 +562,7 @@ Overload resolution happens in several different situations
 - Use of an operator. The candidates are the overloaded operator functions at namespace scope, the overloaded operator functions in the left class object (if any) and the built-in operators.
 
 > -运算符的使用。候选是命名空间范围内的重载运算符函数、左类对象中的重载运算符功能（如果有的话）和内置运算符。
+
 <li>Overload resolution to find the correct conversion operator function or constructor to invoke for an initialization
 <ul>
 
@@ -652,4 +585,3 @@ Overload resolution happens in several different situations
 - For list-initialization of a non-aggregate class object (`Class c{1, 2, 3}`), the candidates are the initializer list constructors for a first pass through overload resolution. If this doesn't find a viable candidate, a second pass through overload resolution is done, with the constructors of `Class` as candidates.
 
 > -对于非聚合类对象（“class c｛1，2，3｝”）的列表初始化，候选是第一次通过重载解析的初始化器列表构造函数。如果找不到可行的候选者，则执行第二次通过重载解析，将“Class”的构造函数作为候选者。
-

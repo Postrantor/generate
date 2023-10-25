@@ -2,23 +2,18 @@
 tip: translate by baidu@2023-10-25 08:30:23
 ---
 ---
+
 metaTitle: "C++ | Recursive Mutex"
 description: "std::recursive_mutex"
----
+-----------------------------------
 
 # Recursive Mutex
 
-
-
-
 ## std::recursive_mutex
-
-
 
 Recursive mutex allows the same thread to recursively lock a resource - up to an unspecified limit.
 
 > 递归互斥允许同一个线程递归地锁定一个资源，最多锁定一个未指定的限制。
-
 
 There are very few real-word justifications for this. Certain complex implementations might need to call an overloaded copy of a function without releasing the lock.
 
@@ -63,4 +58,3 @@ There are very few real-word justifications for this. Certain complex implementa
     future2.get();
 
 ```
-

@@ -2,17 +2,14 @@
 tip: translate by baidu@2023-10-25 08:30:28
 ---
 ---
+
 metaTitle: "C++ | References"
 description: "Defining a reference, C++ References are Alias of existing variables"
----
+-----------------------------------------------------------------------------------
 
 # References
 
-
-
 ## Defining a reference
-
-
 
 References behaves similarly, but not entirely like const pointers. A reference is defined by suffixing an ampersand `&` to a type name.
 
@@ -48,7 +45,6 @@ int &refi = i, &refj = j;
 
 ```
 
-
 References **must** be initialized correctly at the time of definition, and cannot be modified afterwards. The following piece of codes causes a compile error:
 
 > 引用**在定义时必须**正确初始化，之后不能修改。以下代码导致编译错误：
@@ -66,16 +62,11 @@ int &refi = nullptr; // error: non-const lvalue reference to type 'int' cannot b
 
 ```
 
-
-
 ## C++ References are Alias of existing variables
-
-
 
 A Reference in C++ is just an `Alias` or another name of a variable. Just like most of us can be referred using our passport name and nick name.
 
-> C++中的引用只是一个“别名”或变量的另一个名称。就像我们大多数人可以用护照名和昵称来推荐一样。
-
+> C++ 中的引用只是一个“别名”或变量的另一个名称。就像我们大多数人可以用护照名和昵称来推荐一样。
 
 References doesn't exist literally and they don't occupy any memory. If we print the address of reference variable it will print the same address as that of the variable its referring to.
 
@@ -92,7 +83,6 @@ int main() {
 }
 
 ```
-
 
 In the above example, both `cout` will print the same address. The situation will be same if we take a variable as a reference in a function
 
@@ -117,11 +107,9 @@ int main() {
 
 In this example also, both `cout` will print the same address.
 
-
 As we know by now that `C++ References` are just alias, and for an alias to be created, we need to have something which the Alias can refer to.
 
-> 正如我们现在所知，“C++引用”只是别名，要创建别名，我们需要有别名可以引用的东西。
-
+> 正如我们现在所知，“C++ 引用”只是别名，要创建别名，我们需要有别名可以引用的东西。
 
 That's the precise reason why the statement like this will throw a compiler error
 
@@ -134,4 +122,3 @@ int &i;
 ```
 
 Because, the alias is not referring to anything.
-

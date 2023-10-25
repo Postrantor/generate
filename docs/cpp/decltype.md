@@ -2,22 +2,18 @@
 tip: translate by baidu@2023-10-25 08:23:47
 ---
 ---
+
 metaTitle: "C++ | decltype"
 description: "Basic Example, Another example"
----
+---------------------------------------------
 
 # decltype
-
-
 
 The keyword `decltype` can be used to get the type of a variable, function or an expression.
 
 > 关键字“decltype”可用于获取变量、函数或表达式的类型。
 
-
-
 ## Basic Example
-
 
 This example just illustrates how this keyword can be used.
 
@@ -38,10 +34,7 @@ If, for example, someone changes, type of 'a' to:
 
 Then the type of variable `b` now automatically becomes `float`.
 
-
-
 ## Another example
-
 
 Let's say we have vector:
 
@@ -49,7 +42,6 @@ Let's say we have vector:
 std::vector<int> intVector;
 
 ```
-
 
 And we want to declare an iterator for this vector. An obvious idea is to use `auto`. However, it may be needed just declare an iterator variable (and not to assign it to anything). We would do:
 
@@ -59,7 +51,6 @@ And we want to declare an iterator for this vector. An obvious idea is to use `a
 vector<int>::iterator iter;
 
 ```
-
 
 However, with `decltype` it becomes easy and less error prone (if type of `intVector` changes).
 
@@ -77,7 +68,6 @@ decltype(intVector.begin()) iter;
 
 ```
 
-
 In second example, the return type of `begin` is used to determine the actual type, which is `vector<int>::iterator`.
 
 > 在第二个示例中，返回类型“begin”用于确定实际类型，即“vector＜int＞：迭代器”。
@@ -88,4 +78,3 @@ If we need a const_iterator, we just need to use `cbegin`:
 decltype(intVector.cbegin()) iter; // vector<int>::const_iterator
 
 ```
-

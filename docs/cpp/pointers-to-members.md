@@ -2,25 +2,21 @@
 tip: translate by baidu@2023-10-25 08:29:28
 ---
 ---
+
 metaTitle: "C++ | Pointers to members"
 description: "Pointers to static member functions, Pointers to member functions, Pointers to member variables, Pointers to static member variables"
----
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Pointers to members
 
-
-
 ## Pointers to static member functions
-
-
 
 A `static` member function is just like an ordinary C/C++ function, except with scope:
 
-> “static”成员函数与普通的C/C++函数一样，除了作用域：
+> “static”成员函数与普通的 C/C++ 函数一样，除了作用域：
 
 - It is inside a `class`, so it needs its name decorated with the class name;
 - It has accessibility, with `public`, `protected` or `private`.
-
 
 So, if you have access to the `static` member function and decorate it correctly, then you can point to the function like any normal function outside a `class`:
 
@@ -49,11 +45,7 @@ int main() {
 
 ```
 
-
-
 ## Pointers to member functions
-
-
 
 To access a member function of a class, you need to have a "handle" to the particular instance, as either the instance itself, or a pointer or reference to it. Given a class instance, you can point to various of its members with a pointer-to-member, IF you get the syntax correct! Of course, the pointer has to be declared to be of the same type as what you are pointing to...
 
@@ -84,16 +76,11 @@ int main() {
 
 ```
 
-
 Unlike pointers to member variables (in the previous example), the association between the class instance and the member pointer need to be bound tightly together with parentheses, which looks a little strange (as though the `.*` and `->*` aren't strange enough!)
 
-> 与指向成员变量的指针（在上一个示例中）不同，类实例和成员指针之间的关联需要用括号紧密绑定在一起，这看起来有点奇怪（好像`.*`和`->*`还不够奇怪！）
-
-
+> 与指向成员变量的指针（在上一个示例中）不同，类实例和成员指针之间的关联需要用括号紧密绑定在一起，这看起来有点奇怪（好像 `.*` 和 `->*` 还不够奇怪！）
 
 ## Pointers to member variables
-
-
 
 To access a member of a `class`, you need to have a "handle" to the particular instance, as either the instance itself, or a pointer or reference to it. Given a `class` instance, you can point to various of its members with a pointer-to-member, IF you get the syntax correct! Of course, the pointer has to be declared to be of the same type as what you are pointing to...
 
@@ -133,32 +120,26 @@ int main() {
 
 The syntax of pointer-to-member requires some extra syntactic elements:
 
-
 - To define the type of the pointer, you need to mention the base type, as well as the fact that it is inside a class: `int Class::*ptr;`.
 
 > -要定义指针的类型，您需要提到基类型，以及它位于类内部的事实：`int class:：*ptr；`。
 
 - If you have a class or reference and want to use it with a pointer-to-member, you need to use the `.*` operator (akin to the `.` operator).
 
-> -如果您有一个类或引用，并且希望将其与指向成员的指针一起使用，则需要使用`.*`运算符（类似于`.`运算符）。
+> -如果您有一个类或引用，并且希望将其与指向成员的指针一起使用，则需要使用 `.*` 运算符（类似于 `.` 运算符）。
 
 - If you have a pointer to a class and want to use it with a pointer-to-member, you need to use the `->*` operator (akin to the `->` operator).
 
-> -如果您有一个指向类的指针，并希望将其与指向成员的指针一起使用，则需要使用`->*`运算符（类似于`->`运算符）。
-
-
+> -如果您有一个指向类的指针，并希望将其与指向成员的指针一起使用，则需要使用 `->*` 运算符（类似于 `->` 运算符）。
 
 ## Pointers to static member variables
 
-
-
 A `static` member variable is just like an ordinary C/C++ variable, except with scope:
 
-> “static”成员变量与普通的C/C++变量一样，除了作用域：
+> “static”成员变量与普通的 C/C++ 变量一样，除了作用域：
 
 - It is inside a `class`, so it needs its name decorated with the class name;
 - It has accessibility, with `public`, `protected` or `private`.
-
 
 So, if you have access to the `static` member variable and decorate it correctly, then you can point to the variable like any normal variable outside a `class`:
 
@@ -189,17 +170,13 @@ int main() {
 
 ```
 
-
-
 #### Syntax
-
 
 <li>
 Assuming a class named Class...
 <ul>
 - type *ptr = &Class::member;        // Point to static members only
 - type Class::*ptr = &Class::member; // Point to non-static Class members
-
 
 For pointers to non-static class members, given the following two definitions:
 
@@ -219,4 +196,3 @@ Pointers to Class member functions
 - ptr = &Class::F;    // Point to function 'F' within every Class
 - (instance.*ptr)(5); // Call instance's F
 - (p->*ptr)(6);       // Call p's F
-

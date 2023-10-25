@@ -2,24 +2,20 @@
 tip: translate by baidu@2023-10-25 08:31:41
 ---
 ---
+
 metaTitle: "C++ | Sorting"
 description: "Sorting and sequence containers, Sorting sequence containers with specifed ordering, Sorting sequence containers by overloaded less operator, Sorting sequence containers using compare function, Sorting sequence containers using lambda expressions (C++11), sorting with std::map (ascending and descending), Sorting built-in arrays"
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Sorting
 
-
-
 ## Sorting and sequence containers
 
-
 `std::sort`, found in the standard library header `algorithm`, is a standard library algorithm for sorting a range of values, defined by a pair of iterators. `std::sort` takes as the last parameter a functor used to compare two values; this is how it determines the order. Note that `std::sort` is not [stable](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability).
-
 
 The comparison function **must** impose a [Strict, Weak Ordering](https://en.wikipedia.org/wiki/Weak_ordering#Strict_weak_orderings) on the elements. A simple less-than (or greater-than) comparison will suffice.
 
 > 比较函数**必须**强制执行[严格，弱排序](https://en.wikipedia.org/wiki/Weak_ordering#Strict_weak_orderings)关于元素。一个简单的小于（或大于）比较就足够了。
-
 
 A container with random-access iterators can be sorted using the `std::sort` algorithm:
 
@@ -50,7 +46,6 @@ MyList.sort();
 
 ```
 
-
 Their member `sort` functions always sort the entire list, so they cannot sort a sub-range of elements. However, since `list` and `forward_list` have fast splicing operations, you could extract the elements to be sorted from the list, sort them, then stuff them back where they were quite efficiently like this:
 
 > 它们的成员“排序”函数总是对整个列表进行排序，因此不能对元素的子范围进行排序。然而，由于“list”和“forward_list”具有快速拼接操作，您可以从列表中提取要排序的元素，对它们进行排序，然后将它们填充回原来的位置，非常有效，如下所示：
@@ -67,11 +62,7 @@ void sort_sublist(std::list<int>& mylist, std::list<int>::const_iterator start, 
 
 ```
 
-
-
 ## Sorting sequence containers with specifed ordering
-
-
 
 If the values in a container have certain operators already overloaded, `std::sort` can be used with specialized functors to sort in either ascending or descending order:
 
@@ -98,10 +89,9 @@ std::sort(v.rbegin(), v.rend());
 
 ```
 
-
 In C++14, we don't need to provide the template argument for the comparison function objects and instead let the object deduce based on what it gets passed in:
 
-> 在C++14中，我们不需要为比较函数对象提供模板参数，而是让对象根据传入的内容进行推导：
+> 在 C++14 中，我们不需要为比较函数对象提供模板参数，而是让对象根据传入的内容进行推导：
 
 ```cpp
 std::sort(v.begin(), v.end(), std::less<>());     // ascending order
@@ -109,16 +99,11 @@ std::sort(v.begin(), v.end(), std::greater<>());  // descending order
 
 ```
 
-
-
 ## Sorting sequence containers by overloaded less operator
-
-
 
 If no ordering function is passed, `std::sort` will order the elements by calling `operator<` on pairs of elements, which must return a type contextually convertible to `bool` (or just `bool`). Basic types (integers, floats, pointers etc) have already build in comparison operators.
 
 > 如果没有传递排序函数，“std:：sort”将通过对元素对调用“operator<”来对元素进行排序，这必须返回一个在上下文中可转换为“bool”（或仅为“bool'”）的类型。基本类型（整数、浮点、指针等）已经内置了比较运算符。
-
 
 We can overload this operator to make the default `sort` call work on user-defined types.
 
@@ -179,10 +164,7 @@ int main() {
 
 ```
 
-
-
 ## Sorting sequence containers using compare function
-
 
 ```cpp
 // Include sequence containers
@@ -236,10 +218,7 @@ int main() {
 
 ```
 
-
-
 ## Sorting sequence containers using lambda expressions (C++11)
-
 
 ```cpp
 // Include sequence containers
@@ -293,11 +272,7 @@ int main() {
 
 ```
 
-
-
 ## sorting with std::map (ascending and descending)
-
-
 
 This example sorts elements in **ascending** order of a **key** using a map.
 
@@ -305,7 +280,7 @@ This example sorts elements in **ascending** order of a **key** using a map.
 
 You can use any type, including class, instead of `std::string`, in the example below.
 
-> 在下面的示例中，您可以使用任何类型，包括class，而不是“std:：string”。
+> 在下面的示例中，您可以使用任何类型，包括 class，而不是“std:：string”。
 
 ```cpp
 #include <iostream>
@@ -347,11 +322,9 @@ Jupiter (10.97 of Earth's radius)
 
 ```
 
-
 If entries with equal keys are possible, use `multimap` instead of `map` (like in the following example).
 
 > 如果可以使用相同键的条目，请使用“multimap”而不是“map”（如以下示例中所示）。
-
 
 To sort elements in **descending** manner, declare the map with a proper comparison functor (`std::greater<>`):
 
@@ -395,15 +368,11 @@ fish (has 0 legs)
 
 ```
 
-
-
 ## Sorting built-in arrays
-
-
 
 The `sort` algorithm sorts a sequence defined by two iterators. This is enough to sort a built-in (also known as c-style) array.
 
-> “排序”算法对由两个迭代器定义的序列进行排序。这足以对内置（也称为c样式）数组进行排序。
+> “排序”算法对由两个迭代器定义的序列进行排序。这足以对内置（也称为 c 样式）数组进行排序。
 
 ```cpp
 int arr1[] = {36, 24, 42, 60, 59};
@@ -416,10 +385,9 @@ sort(std::begin(arr1), std::end(arr1), std::greater<int>());
 
 ```
 
-
 Prior to C++11, end of array had to be "calculated" using the size of the array:
 
-> 在C++11之前，必须使用数组的大小“计算”数组的末尾：
+> 在 C++11 之前，必须使用数组的大小“计算”数组的末尾：
 
 ```cpp
 // Use a hard-coded number for array size
@@ -431,10 +399,6 @@ sort(arr1, arr1 + arr1_size);
 
 ```
 
-
-
 #### Remarks
 
-
 The `std::sort` function family is found in the `algorithm` library.
-

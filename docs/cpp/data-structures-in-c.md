@@ -2,16 +2,14 @@
 tip: translate by baidu@2023-10-25 08:23:45
 ---
 ---
+
 metaTitle: "C++ | Data Structures in C++"
 description: "Linked List implementation in C++"
----
+------------------------------------------------
 
 # Data Structures in C++
 
-
-
 ## Linked List implementation in C++
-
 
 Creating a List Node
 
@@ -163,4 +161,3 @@ List::~List()
 }
 
 ```
-
